@@ -9,111 +9,122 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     body {
-      background: #0f0c29; /* Fondo oscuro */
-      background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* Degradado morado */
+      background: #0d0d0d;
+      color: #f0f0f0;
       height: 100vh;
       overflow: hidden;
-      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     #particles-js {
-      position: absolute;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       z-index: 0;
     }
-    .chat-container {
+    .container {
       position: relative;
       z-index: 10;
       width: 100%;
-      max-width: 800px;
-      background: rgba(10, 10, 20, 0.85);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      max-width: 900px;
+      height: 90vh;
+      background: transparent;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      height: 90vh;
-      margin: 20px auto;
+      backdrop-filter: none; /* Quitamos blur para que se vea el fondo */
     }
     .header {
-      background: linear-gradient(90deg, #4b6cb7, #182848);
-      color: white;
       padding: 20px;
       text-align: center;
+      background: rgba(15, 15, 15, 0.7);
+      border-radius: 20px 20px 0 0;
+      border-bottom: 1px solid rgba(80, 80, 120, 0.2);
     }
     .header h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       letter-spacing: 1px;
     }
     .header p {
       font-size: 0.9rem;
-      opacity: 0.8;
+      color: #aaa;
     }
-    .chat-box {
+    .chat-area {
       flex: 1;
       padding: 20px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      color: white;
+      gap: 16px;
+      background: rgba(10, 10, 10, 0.6); /* Semi-transparente */
+      border-radius: 0 0 20px 20px;
     }
     .message {
-      max-width: 80%;
-      padding: 14px 18px;
-      border-radius: 20px;
+      max-width: 85%;
+      padding: 14px 20px;
+      border-radius: 18px;
       line-height: 1.5;
-      animation: fadeIn 0.3s ease-out;
+      animation: fadeInUp 0.3s ease-out;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .user-message {
       align-self: flex-end;
-      background: linear-gradient(90deg, #4b6cb7, #3a5ca0);
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
       color: white;
     }
     .ai-message {
       align-self: flex-start;
-      background: rgba(50, 50, 70, 0.8);
+      background: rgba(40, 40, 50, 0.8);
       color: #e0e0ff;
     }
-    .input-area {
+    .input-section {
       display: flex;
-      padding: 15px;
-      background: rgba(20, 20, 35, 0.9);
-      border-top: 1px solid #444;
+      padding: 20px;
+      background: rgba(10, 10, 10, 0.7);
+      border-radius: 0 0 20px 20px;
+      border-top: 1px solid rgba(80, 80, 120, 0.2);
     }
-    .input-area input {
+    .input-section input {
       flex: 1;
-      padding: 14px 20px;
-      border: 1px solid #555;
-      border-radius: 30px;
-      background: rgba(30, 30, 50, 0.8);
+      padding: 16px 20px;
+      border-radius: 50px;
+      border: 1px solid rgba(100, 100, 150, 0.3);
+      background: rgba(30, 30, 40, 0.8);
       color: white;
+      font-size: 1rem;
       outline: none;
     }
-    .input-area input:focus {
-      border-color: #4b6cb7;
+    .input-section input:focus {
+      border-color: #2575fc;
     }
-    .input-area button {
-      margin-left: 10px;
-      padding: 14px 25px;
-      background: linear-gradient(90deg, #4b6cb7, #3a5ca0);
+    .input-section button {
+      margin-left: 12px;
+      padding: 16px 28px;
+      background: linear-gradient(90deg, #2575fc, #6a11cb);
       color: white;
       border: none;
-      border-radius: 30px;
+      border-radius: 50px;
       cursor: pointer;
+      font-weight: bold;
       transition: all 0.3s;
     }
-    .input-area button:hover {
-      transform: scale(1.05);
-      background: linear-gradient(90deg, #3a5ca0, #2a4a8a);
+    .input-section button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(106, 17, 203, 0.5);
     }
   </style>
 </head>
@@ -122,20 +133,20 @@
   <!-- Partículas de fondo -->
   <div id="particles-js"></div>
 
-  <div class="chat-container">
+  <div class="container">
     <div class="header">
-      <h1>🤖 OcladeIA</h1>
-      <p>Asistente Profesional con Inteligencia Artificial y Búsqueda Web</p>
+      <h1>OcladeIA</h1>
+      <p>Asistente Profesional con Inteligencia Artificial</p>
     </div>
 
-    <div class="chat-box" id="chat-box">
+    <div class="chat-area" id="chat-area">
       <div class="message ai-message">
-        ¡Hola! Soy <strong>OcladeIA</strong>, tu asistente inteligente. ¿En qué puedo ayudarte hoy?
+        ¡Hola! Soy <strong>OcladeIA</strong>. Estoy aquí para ayudarte con cualquier pregunta. ¿En qué puedo colaborarte?
       </div>
     </div>
 
-    <div class="input-area">
-      <input type="text" id="user-input" placeholder="Haz tu pregunta a OcladeIA..." />
+    <div class="input-section">
+      <input type="text" id="user-input" placeholder="Escribe tu pregunta a OcladeIA..." />
       <button id="send-btn">Enviar</button>
     </div>
   </div>
@@ -146,21 +157,21 @@
     // Configuración de partículas
     particlesJS("particles-js", {
       particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
+        number: { value: 60, density: { enable: true, value_area: 800 } },
         color: { value: "#ffffff" },
         shape: { type: "circle" },
-        opacity: { value: 0.5, },
-        size: { value: 3, random: true },
+        opacity: { value: 0.5, random: true },
+        size: { value: 2, random: true },
         line_linked: {
           enable: true,
-          distance: 150,
-          color: "#4b6cb7",
-          opacity: 0.4,
+          distance: 120,
+          color: "#6a11cb",
+          opacity: 0.3,
           width: 1
         },
         move: {
           enable: true,
-          speed: 2,
+          speed: 1.5,
           direction: "none",
           random: true,
           straight: false,
@@ -178,18 +189,17 @@
       }
     });
 
-    const chatBox = document.getElementById('chat-box');
+    const chatArea = document.getElementById('chat-area');
     const input = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
 
     // Simular respuesta de IA con búsqueda web
     async function getAIResponse(query) {
-      // Simulación de respuesta realista
       const responses = [
-        `Sobre "${query}", he encontrado información reciente que indica que ...`,
-        `La búsqueda sobre "${query}" revela que ...`,
-        `Según mis fuentes actualizadas, ${query} es ...`,
-        `Tras analizar tu pregunta, puedo decirte que ${query} ...`
+        `Sobre "${query}", he encontrado que ...`,
+        `La información más reciente sobre "${query}" indica que ...`,
+        `Tras revisar mis fuentes, puedo decirte que ${query} ...`,
+        `Basándome en lo que sé, ${query} se refiere a ...`
       ];
       return responses[Math.floor(Math.random() * responses.length)];
     }
@@ -209,8 +219,8 @@
       const typing = document.createElement('div');
       typing.className = 'message ai-message';
       typing.textContent = 'OcladeIA está escribiendo...';
-      chatBox.appendChild(typing);
-      chatBox.scrollTop = chatBox.scrollHeight;
+      chatArea.appendChild(typing);
+      chatArea.scrollTop = chatArea.scrollHeight;
 
       // Obtener respuesta de IA
       const aiResponse = await getAIResponse(userText);
@@ -225,8 +235,8 @@
       const messageDiv = document.createElement('div');
       messageDiv.className = `message ${sender}-message`;
       messageDiv.textContent = text;
-      chatBox.appendChild(messageDiv);
-      chatBox.scrollTop = chatBox.scrollHeight;
+      chatArea.appendChild(messageDiv);
+      chatArea.scrollTop = chatArea.scrollHeight;
     }
 
     // Permitir enviar con Enter
