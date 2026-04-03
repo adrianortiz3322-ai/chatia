@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot IA con Búsqueda Web</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #chat-box {
+      height: 400px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow-y: scroll;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+    }
+    .user-message {
+      text-align: right;
+      color: blue;
+    }
+    .ai-message {
+      text-align: left;
+      color: green;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 8px;
+    }
+    button {
+      padding: 8px 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chatbot IA con Búsqueda Web (Gratuito)</h1>
+
+  <div id="chat-box"></div>
+
+  <form id="chat-form">
+    <input type="text" id="user-input" placeholder="Pregúntame algo..." />
+    <button type="submit">Enviar</button>
+  </form>
+
+  <!-- Incluir transformers.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0/dist/transformers.min.js"></script>
+
+  <script>
+    let generator = null;
+    const chatBox = document.getElementById('chat-box');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('user-input');
+
+    // Cargar modelo
+    async function loadModel() {
+      if (!generator) {
+        chatBox.innerHTML += '<div>Cargando modelo... (espera unos segundos)</div>';
+        generator = await window.transformers.pipeline('text-generation', 'Xenova/mistral-7b-instruct-v0.2');
+        chatBox.innerHTML += '<div>✅ Modelo listo. Puedes comenzar a preguntar.</div>';
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    }
+
+    // Buscar en DuckDuckGo
+    async function searchWeb(query) {
+      try {
+        const res = await fetch(`https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json`);
+        const data = await res.json();
+        const results = data.RelatedTopics.slice(0, 3).map(r => r.Text).filter(Boolean).join(". ");
+        return results || "No encontré resultados.";
+      } catch (e) {
+        return "Error buscando en web.";
+      }
+    }
+
+    // Generar respuesta
+    async function generateResponse(context, question) {
+      const prompt = `Usando este contexto:\n${context}\n\nResponde la siguiente pregunta: ${question}`;
+      const output = await generator(prompt, {
+        max_new_tokens: 150,
+        temperature: 0.7,
+      });
+      return output[0].generated_text;
+    }
+
+    // Enviar mensaje
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userText = input.value.trim();
+      if (!userText) return;
+
+      // Mostrar mensaje usuario
+      chatBox.innerHTML += `<div class="user-message"><strong>Tú:</strong> ${userText}</div>`;
+      input.value = '';
+
+      // Buscar en web
+      const context = await searchWeb(userText);
+
+      // Generar respuesta
+      const aiText = await generateResponse(context, userText);
+
+      // Mostrar respuesta IA
+      chatBox.innerHTML += `<div class="ai-message"><strong>IA:</strong> ${aiText}</div>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    // Cargar modelo al inicio
+    loadModel();
+  </script>
+
+</body>
+</html>
+
