@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>OcladeIA - Asistente Profesional</title>
+  <title>OcladeAI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
@@ -11,143 +11,385 @@
       box-sizing: border-box;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
+
     body {
-      background: #0d0d0d;
-      color: #f0f0f0;
+      background: #0a0a1a;
+      color: #e0e0ff;
       height: 100vh;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      position: relative;
     }
+
+    /* Partículas */
     #particles-js {
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: 0;
     }
-    .container {
+
+    /* Contenedor principal */
+    .app {
       position: relative;
       z-index: 10;
       width: 100%;
-      max-width: 900px;
-      height: 90vh;
-      background: transparent;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-      overflow: hidden;
+      max-width: 400px;
+      height: 100vh;
+      margin: 0 auto;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      backdrop-filter: none; /* Quitamos blur para que se vea el fondo */
     }
+
+    /* Título centrado arriba */
     .header {
-      padding: 20px;
       text-align: center;
-      background: rgba(15, 15, 15, 0.7);
-      border-radius: 20px 20px 0 0;
-      border-bottom: 1px solid rgba(80, 80, 120, 0.2);
+      margin-bottom: 30px;
+      padding-top: 10px;
     }
-    .header h1 {
-      font-size: 2rem;
-      background: linear-gradient(90deg, #6a11cb, #2575fc);
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00f2d3, #6a11cb);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: 1px;
+      animation: pulseLogo 2s infinite alternate;
     }
-    .header p {
-      font-size: 0.9rem;
-      color: #aaa;
+    @keyframes pulseLogo {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.02); }
     }
-    .chat-area {
+
+    /* Contenido del chat */
+    .chat-content {
       flex: 1;
-      padding: 20px;
-      overflow-y: auto;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 16px;
-      background: rgba(10, 10, 10, 0.6); /* Semi-transparente */
-      border-radius: 0 0 20px 20px;
+      padding: 20px 0;
     }
+
+    /* Saludo con gradiente animado */
+    .greeting {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(90deg, #00f2d3, #6a11cb, #a1c4fd, #00f2d3);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 6s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Texto con efecto typewriter */
+    .typewriter-container {
+      text-align: center;
+      margin-top: 8px;
+    }
+    .typewriter {
+      font-size: 1.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00f2d3;
+      animation: typing 2.2s steps(20, end), blink-caret 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #00f2d3; }
+    }
+
+    /* Fecha actual */
+    .date-info {
+      font-size: 0.9rem;
+      color: #aaa;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Mensaje del bot */
     .message {
       max-width: 85%;
-      padding: 14px 20px;
-      border-radius: 18px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      background: rgba(40, 40, 50, 0.6);
+      color: #e0e0ff;
       line-height: 1.5;
-      animation: fadeInUp 0.3s ease-out;
+      animation: fadeIn 0.4s ease-out;
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-10px); }
+      to { opacity: 1; transform: translateX(0); }
     }
+
+    /* Contenedor de mensaje con avatar */
+    .msg-with-avatar {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    /* Anillo doble con puntos giratorios */
+    .ring-avatar {
+      width: 36px;
+      height: 36px;
+      position: relative;
+      animation: spinRing 4s linear infinite;
+    }
+
+    .ring {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      animation: rotateRing 6s linear infinite;
+    }
+    .ring.outer {
+      border-image: conic-gradient(#00f2d3, #6a11cb, #a1c4fd, #00f2d3) 1;
+      animation-duration: 6s;
+    }
+    .ring.inner {
+      width: 60%;
+      height: 60%;
+      top: 20%;
+      left: 20%;
+      border-image: conic-gradient(#6a11cb, #a1c4fd, #00f2da11cb) 1;
+      animation-duration: 4s;
+      animation-direction: reverse;
+    }
+
+    .dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #00f2d3;
+      border-radius: 50%;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px #00f2d3;
+    }
+    .dot:nth-child(2) { transform: translateX(-50%) rotate(72deg); top: -3px; }
+    .dot:nth-child(3) { transform: translateX(-50%) rotate(144deg); top: -3px; }
+    .dot:nth-child(4) { transform: translateX(-50%) rotate(216deg); top: -3px; }
+    .dot:nth-child(5) { transform: translateX(-50%) rotate(288deg); top: -3px; }
+
+    @keyframes spinRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes rotateRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Mensaje del usuario (sin avatar) */
     .user-message {
-      align-self: flex-end;
       background: linear-gradient(90deg, #2575fc, #6a11cb);
       color: white;
+      align-self: flex-end;
     }
-    .ai-message {
-      align-self: flex-start;
-      background: rgba(40, 40, 50, 0.8);
+
+    /* Botón desplegable */
+    .model-selector {
+      margin: 20px 0;
+    }
+    .model-btn {
+      width: 100%;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
       color: #e0e0ff;
-    }
-    .input-section {
+      font-size: 1rem;
       display: flex;
-      padding: 20px;
-      background: rgba(10, 10, 10, 0.7);
-      border-radius: 0 0 20px 20px;
-      border-top: 1px solid rgba(80, 80, 120, 0.2);
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.3s;
     }
-    .input-section input {
+    .model-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .model-btn::after {
+      content: "▼";
+      font-size: 0.7rem;
+    }
+    .model-btn.open::after {
+      content: "▲";
+    }
+
+    .model-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(15, 15, 25, 0.95);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-top: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    .model-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .model-item {
+      padding: 10px 20px;
+      color: #e0e0ff;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+    .model-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Input */
+    .input-area {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .input-area input {
       flex: 1;
-      padding: 16px 20px;
-      border-radius: 50px;
-      border: 1px solid rgba(100, 100, 150, 0.3);
-      background: rgba(30, 30, 40, 0.8);
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
       color: white;
       font-size: 1rem;
       outline: none;
     }
-    .input-section input:focus {
-      border-color: #2575fc;
-    }
-    .input-section button {
-      margin-left: 12px;
-      padding: 16px 28px;
-      background: linear-gradient(90deg, #2575fc, #6a11cb);
+    .input-area button {
+      padding: 14px 22px;
+      background: linear-gradient(90deg, #00f2d3, #6a11cb);
       color: white;
       border: none;
-      border-radius: 50px;
+      border-radius: 16px;
+      font-weight: 600;
       cursor: pointer;
-      font-weight: bold;
       transition: all 0.3s;
     }
-    .input-section button:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 15px rgba(106, 17, 203, 0.5);
+    .input-area button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 12px rgba(0, 242, 211, 0.5);
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      margin-top: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+    .footer-icon {
+      width: 20px;
+      height: 20px;
+      background: #00f2d3;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .link {
+      color: #00f2d3;
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .app {
+        padding: 16px;
+      }
+      .greeting {
+        font-size: 1.8rem;
+      }
+      .typewriter {
+        font-size: 1.1rem;
+      }
+      .ring-avatar {
+        width: 32px;
+        height: 32px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Partículas de fondo -->
+  <!-- Partículas -->
   <div id="particles-js"></div>
 
-  <div class="container">
+  <div class="app">
+    <!-- Título centrado -->
     <div class="header">
-      <h1>OcladeIA</h1>
-      <p>Asistente Profesional con Inteligencia Artificial</p>
+      <div class="logo">OcladeAI</div>
     </div>
 
-    <div class="chat-area" id="chat-area">
-      <div class="message ai-message">
-        ¡Hola! Soy <strong>OcladeIA</strong>. Estoy aquí para ayudarte con cualquier pregunta. ¿En qué puedo colaborarte?
+    <!-- Chat: contenido inicial -->
+    <div class="chat-content" id="chat-content">
+      <div class="greeting" id="greeting-text">Buenas tardes</div>
+      <div class="typewriter-container">
+        <div class="typewriter" id="help-text">¿En qué te puedo ayudar hoy?</div>
+      </div>
+      <div class="date-info" id="date-info">Cargando fecha...</div>
+    </div>
+
+    <!-- Botón desplegable -->
+    <div class="model-selector">
+      <div class="model-btn" id="model-btn">⚡ Seleccionar modelo</div>
+      <div class="model-menu" id="model-menu">
+        <div class="model-item" data-model="code">💻 Code</div>
+        <div class="model-item" data-model="think">🧠 Think</div>
+        <div class="model-item" data-model="chat">💬 Chat</div>
+        <div class="model-item" data-model="vision">👁️ Vision</div>
+        <div class="model-item" data-model="audio">🎧 Audio</div>
       </div>
     </div>
 
-    <div class="input-section">
-      <input type="text" id="user-input" placeholder="Escribe tu pregunta a OcladeIA..." />
+    <!-- Input -->
+    <div class="input-area">
+      <input type="text" placeholder="Escribe tu mensaje..." />
       <button id="send-btn">Enviar</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-icon">🤖</div>
+      <span>oclade-ia.vercel.app</span>
     </div>
   </div>
 
@@ -157,21 +399,21 @@
     // Configuración de partículas
     particlesJS("particles-js", {
       particles: {
-        number: { value: 60, density: { enable: true, value_area: 800 } },
-        color: { value: "#ffffff" },
+        number: { value: 70, density: { enable: true, value_area: 800 } },
+        color: { value: ["#00f2d3", "#6a11cb", "#a1c4fd", "#e0e0ff"] },
         shape: { type: "circle" },
         opacity: { value: 0.5, random: true },
-        size: { value: 2, random: true },
+        size:2.5, random: true },
         line_linked: {
           enable: true,
           distance: 120,
-          color: "#6a11cb",
-          opacity: 0.3,
-          width: 1
+          color: "#00f2d3",
+          opacity: 0.2,
+          width: 0.8
         },
         move: {
           enable: true,
-          speed: 1.5,
+          speed: 1.1,
           direction: "none",
           random: true,
           straight: false,
@@ -189,59 +431,131 @@
       }
     });
 
-    const chatArea = document.getElementById('chat-area');
-    const input = document.getElementById('user-input');
-    const sendBtn = document.getElementById('send-btn');
+    // Saludo dinámico
+    const now = new Date();
+    const hour = now.getHours();
+    let greeting = "";
+    if (hour >= 6 && hour < 12) greeting = "Buenos días";
+    else if (hour >= 12 && hour < 19) greeting = "Buenas tardes";
+    else greeting = "Buenas noches";
 
-    // Simular respuesta de IA con búsqueda web
-    async function getAIResponse(query) {
-      const responses = [
-        `Sobre "${query}", he encontrado que ...`,
-        `La información más reciente sobre "${query}" indica que ...`,
-        `Tras revisar mis fuentes, puedo decirte que ${query} ...`,
-        `Basándome en lo que sé, ${query} se refiere a ...`
-      ];
-      return responses[Math.floor(Math.random() * responses.length)];
+    document.getElementById('greeting-text').textContent = greeting;
+
+    // Fecha actual
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateStr = now.toLocaleDateString('es-ES', options);
+    document.getElementById('date-info').textContent = `Hoy es ${dateStr}`;
+
+    // Typewriter effect para "¿En qué te puedo ayudar hoy?"
+    const helpText = document.getElementById('help-text');
+    const fullText = "¿En qué te puedo ayudar hoy?";
+    helpText.innerHTML = '';
+    let i = 0;
+    const typewriter = setInterval(() => {
+      helpText.innerHTML += fullText.charAt(i);
+      i++;
+      if (i >= fullText.length) clearInterval(typewriter);
+    }, 80);
+
+    // Menú desplegable
+    const modelBtn = document.getElementById('model-btn');
+    const modelMenu = document.getElementById('model-menu');
+    const modelItems = document.querySelectorAll('.model-item');
+
+    modelBtn.addEventListener('click', () => {
+      modelBtn.classList.toggle('open');
+      modelMenu.classList.toggle('open');
+    });
+
+    modelItems.forEach(item => {
+      item.addEventListener('click', () => {
+        modelItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        modelBtn.innerHTML = `${item.innerHTML} <span style="opacity:0.7;font-size:0.7em;">✓</span>`;
+        modelBtn.classList.remove('open');
+        modelMenu.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!modelBtn.contains(e.target) && !modelMenu.contains(e.target)) {
+        modelBtn.classList.remove('open');
+        modelMenu.classList.remove('open');
+      }
+    });
+
+    // Función para crear el modelo 3D
+    function createAvatar() {
+      return `
+        <div class="ring-avatar">
+          <div class="ring outer">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <div class="ring inner">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Función para agregar mensaje al chat
+    function addMessage(text, isUser) {
+      const chatContent = document.getElementById('chat-content');
+      const msgContainer = document.createElement('div');
+      msgContainer.className = 'msg-with-avatar';
+
+      const message = document.createElement('div');
+      message.className = 'message';
+      if (isUser) {
+        message.classList.add('user-message');
+      }
+      message.textContent = text;
+
+      if (isUser) {
+        // Mensaje del usuario: sin avatar
+        msgContainer.style.flexDirection = 'row-reverse';
+        msgContainer.style.justifyContent = 'flex-end';
+        msgContainer.appendChild(message);
+      } else {
+        // Mensaje del bot: con avatar
+        const avatar = document.createElement('div');
+        avatar.innerHTML = createAvatar();
+        msgContainer.appendChild(avatar);
+        msgContainer.appendChild(message);
+      }
+
+      chatContent.appendChild(msgContainer);
+      chatContent.scrollTop = chatContent.scrollHeight;
     }
 
     // Enviar mensaje
-    sendBtn.addEventListener('click', async () => {
-      const userText = input.value.trim();
-      if (!userText) return;
+    document.getElementById('send-btn').addEventListener('click', () => {
+      const input = document.querySelector('.input-area input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      // Eliminar contenido inicial si existe
+      if (document.querySelector('.greeting')) {
+        document.querySelector('.greeting').remove();
+        document.querySelector('.typewriter-container').remove();
+        document.querySelector('.date-info').remove();
+      }
 
       // Mostrar mensaje del usuario
-      addMessage(userText, 'user');
+      addMessage(text, true);
 
-      // Limpiar entrada
+      // Limpiar input
       input.value = '';
 
-      // Mostrar "escribiendo..."
-      const typing = document.createElement('div');
-      typing.className = 'message ai-message';
-      typing.textContent = 'OcladeIA está escribiendo...';
-      chatArea.appendChild(typing);
-      chatArea.scrollTop = chatArea.scrollHeight;
-
-      // Obtener respuesta de IA
-      const aiResponse = await getAIResponse(userText);
-
-      // Quitar "escribiendo..." y mostrar respuesta
-      typing.remove();
-      addMessage(aiResponse, 'ai');
+      // Simular respuesta de IA después de 1.5 segundos
+      setTimeout(() => {
+        addMessage(`Gracias por tu mensaje: "${text}". ¿En qué más puedo ayudarte?`, false);
+      }, 1500);
     });
 
-    // Función para agregar mensaje al chat
-    function addMessage(text, sender) {
-      const messageDiv = document.createElement('div');
-      messageDiv.className = `message ${sender}-message`;
-      messageDiv.textContent = text;
-      chatArea.appendChild(messageDiv);
-      chatArea.scrollTop = chatArea.scrollHeight;
-    }
-
     // Permitir enviar con Enter
-    input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendBtn.click();
+    document.querySelector('.input-area input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') document.getElementById('send-btn').click();
     });
   </script>
 
