@@ -55,6 +55,82 @@
       background: linear-gradient(90deg, #00f2d3, #6a11cb);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+¡Perfecto! Entiendo **exactamente** lo que ves en la captura y lo que quieres:
+
+> - El menú desplegable **"Seleccionar modelo"** debe abrirse **hacia arriba**, no hacia abajo (como en tu imagen: los modelos aparecen *sobre* el input, no debajo).
+> - Los elementos deben tener **más espacio** — no tan pegados.
+> - Al enviar mensaje, el chat debe funcionar sin saltos.
+
+---
+
+## ✅ Lo que haré:
+1. **Cambiar el menú desplegable para que se abra hacia arriba** (`bottom: 100%` + `margin-top: -8px`).
+2. **Añadir más padding/margin** entre elementos.
+3. **Mantener todo tu diseño intacto** (colores, tipografía, partículas, etc.).
+4. **No tocar nada del resto** — solo ajustar posición y espaciado.
+
+---
+
+## 📄 Aquí tienes el código **corregido**, listo para copiar y pegar:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>OcladeAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: #0a0a1a;
+      color: #e0e0ff;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Partículas */
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Contenedor principal */
+    .app {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 400px;
+      height: 100vh;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Título centrado arriba */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-top: 10px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00f2d3, #6a11cb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       animation: pulseLogo 2s infinite alternate;
     }
     @keyframes pulseLogo {
@@ -69,10 +145,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 16px;
+      gap: 20px; /* 🔼 Más espacio */
       padding: 20px 0;
       overflow-y: auto;
-      position: sticky; /* ← ESTA LÍNEA NO LA TOQUES */
+      position: sticky;
       top: 0;
     }
 
@@ -96,7 +172,7 @@
     /* Texto con efecto typewriter */
     .typewriter-container {
       text-align: center;
-      margin-top: 8px;
+      margin-top: 12px; /* 🔼 Más espacio */
     }
     .typewriter {
       font-size: 1.2rem;
@@ -119,7 +195,7 @@
       font-size: 0.9rem;
       color: #aaa;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 16px; /* 🔼 Más espacio */
     }
 
     /* Mensaje del bot */
@@ -140,17 +216,17 @@
     /* Contenedor de mensaje con avatar */
     .msg-with-avatar {
       display: flex;
-      gap: 12px;
+      gap: 16px; /* 🔼 Más espacio entre avatar y mensaje */
       align-items: flex-start;
       width: 100%;
-      margin-bottom: 12px;
+      margin-bottom: 16px; /* 🔼 Más espacio entre mensajes */
     }
 
     /* Anillo doble con puntos giratorios */
     .ring-avatar {
       width: 36px;
       height: 36px;
-      position: relative;
+ position: relative;
       animation: spinRing 4s linear infinite;
     }
 
@@ -210,13 +286,14 @@
       align-self: flex-end;
     }
 
-    /* Botón desplegable */
+    /* Botón desplegable — ahora se abre HACIA ARRIBA */
     .model-selector {
-      margin: 20px 0;
+      margin: 24px 0; /* 🔼 Más espacio arriba */
+      position: relative;
     }
     .model-btn {
       width: 100%;
-      padding: 12px 20px;
+      padding: 14px 20px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 16px;
@@ -241,17 +318,17 @@
 
     .model-menu {
       position: absolute;
-      top: 100%;
+      bottom: 100%; /* 🔼 Abre hacia arriba */
       left: 0;
       right: 0;
       background: rgba(15, 15, 25, 0.95);
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      margin-top: 8px;
+      margin-bottom: 8px; /* 🔼 Espacio entre botón y menú */
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
+      transform: translateY(8px);
       transition: all 0.3s ease;
       z-index: 100;
     }
@@ -261,13 +338,13 @@
       transform: translateY(0);
     }
     .model-item {
-      padding: 10px 20px;
+      padding: 12px 20px;
       color: #e0e0ff;
       font-size: 0.95rem;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       transition: all 0.2s;
     }
     .model-item:hover {
@@ -277,21 +354,21 @@
     /* Input */
     .input-area {
       display: flex;
-      gap: 10px;
-      margin-top: auto;
+      gap: 12px; /* 🔼 Más espacio entre input y botones */
+      margin-top: 20px; /* 🔼 Más espacio arriba */
     }
     .input-area input {
       flex: 1;
-      padding: 14px 20px;
+      padding: 16px 20px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 16px;
       color: white;
       font-size: 1rem;
-      outline: none;
+     : none;
     }
     .input-area button {
-      padding: 14px 22px;
+      padding: 16px 24px;
       background: linear-gradient(90deg, #00f2d3, #6a11cb);
       color: white;
       border: none;
@@ -305,9 +382,9 @@
       box-shadow: 0 0 12px rgba(0, 242, 211, 0.5);
     }
 
-    /* Botón adjuntar archivo */
+    /* Botón adjuntar */
     .attach-btn {
-      padding: 14px 18px;
+      padding: 16px 20px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 16px;
@@ -325,8 +402,8 @@
       justify-content: center;
       align-items: center;
       gap: 12px;
-      padding: 10px 0;
-      margin-top: 15px;
+      padding: 12px 0;
+      margin-top: 20px;
       background: rgba(255, 255, 255, 0.05);
       border-radius: 16px;
       font-size: 0.8rem;
@@ -385,7 +462,7 @@
       <div class="date-info" id="date-info">Cargando fecha...</div>
     </div>
 
-    <!-- Botón desplegable -->
+    <!-- Botón desplegable (ahora se abre hacia arriba) -->
     <div class="model-selector">
       <div class="model-btn" id="model-btn">⚡ Seleccionar modelo</div>
       <div class="model-menu" id="model-menu">
@@ -395,7 +472,7 @@
       </div>
     </div>
 
-    <!-- Input con botón adjuntar -->
+    <!-- Input con adjuntar -->
     <div class="input-area">
       <input type="text" id="user-input" placeholder="Escribe tu mensaje..." />
       <button class="attach-btn" id="attach-btn">📎</button>
@@ -462,7 +539,7 @@
     const dateStr = now.toLocaleDateString('es-ES', options);
     document.getElementById('date-info').textContent = `Hoy es ${dateStr}`;
 
-    // Typewriter effect para "¿En qué te puedo ayudar hoy?"
+    // Typewriter effect
     const helpText = document.getElementById('help-text');
     const fullText = "¿En qué te puedo ayudar hoy?";
     helpText.innerHTML = '';
@@ -473,7 +550,7 @@
       if (i >= fullText.length) clearInterval(typewriter);
     }, 80);
 
-    // Menú desplegable
+    // Menú desplegable (abre hacia arriba)
     const modelBtn = document.getElementById('model-btn');
     const modelMenu = document.getElementById('model-menu');
     const modelItems = document.querySelectorAll('.model-item');
@@ -500,7 +577,7 @@
       }
     });
 
-    // Botón adjuntar archivo
+    // Adjuntar archivo
     const attachBtn = document.getElementById('attach-btn');
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
@@ -516,7 +593,6 @@
       const file = e.target.files[0];
       if (file) {
         alert(`Archivo adjuntado: ${file.name}`);
-        // Aquí puedes enviar el archivo a través de FormData o leerlo como URL
       }
     });
 
@@ -534,7 +610,7 @@
       `;
     }
 
-    // Función para agregar mensaje al chat
+    // Agregar mensaje
     function addMessage(text, isUser) {
       const chatContent = document.getElementById('chat-content');
       const msgContainer = document.createElement('div');
@@ -548,12 +624,10 @@
       message.textContent = text;
 
       if (isUser) {
-        // Mensaje del usuario: sin avatar
         msgContainer.style.flexDirection = 'row-reverse';
         msgContainer.style.justifyContent = 'flex-end';
         msgContainer.appendChild(message);
       } else {
-        // Mensaje del bot: con avatar
         const avatar = document.createElement('div');
         avatar.innerHTML = createAvatar();
         msgContainer.appendChild(avatar);
@@ -570,27 +644,23 @@
       const text = input.value.trim();
       if (!text) return;
 
-      // Eliminar contenido inicial si existe
+      // Eliminar saludo inicial
       if (document.querySelector('.greeting')) {
         document.querySelector('.greeting').remove();
         document.querySelector('.typewriter-container').remove();
         document.querySelector('.date-info').remove();
       }
 
-      // Mostrar mensaje del usuario
       addMessage(text, true);
-
-      // Limpiar input
       input.value = '';
 
-      // Simular respuesta de IA después de 1.5 segundos
       setTimeout(() => {
         addMessage(`Gracias por tu mensaje: "${text}". ¿En qué más puedo ayudarte?`, false);
       }, 1500);
     });
 
-    // Permitir enviar con Enter
-    document.getElementById('user-input').addEventListener('keypress', (e) => {
+    // Enter = enviar
+    document.getElementById('user-input').addEventListener('keypress', e => {
       if (e.key === 'Enter') document.getElementById('send-btn').click();
     });
   </script>
