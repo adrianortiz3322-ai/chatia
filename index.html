@@ -2,102 +2,170 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Chatbot IA Ligero</title>
+  <title>Chatbot Premium AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
     body {
-      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
       padding: 20px;
     }
-    #chat-box {
-      height: 400px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      overflow-y: scroll;
-      margin-bottom: 20px;
-      background-color: #f9f9f9;
+    .chat-container {
+      width: 100%;
+      max-width: 800px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 90vh;
+    }
+    .header {
+      background: linear-gradient(90deg, #4b6cb7, #182848);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 1.5rem;
+    }
+    .chat-box {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .message {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      line-height: 1.5;
     }
     .user-message {
-      text-align: right;
-      color: blue;
+      align-self: flex-end;
+      background-color: #4b6cb7;
+      color: white;
     }
     .ai-message {
-      text-align: left;
-      color: green;
+      align-self: flex-start;
+      background-color: #eef2f7;
+      color: #333;
     }
-    input[type="text"] {
-      width: 80%;
-      padding: 8px;
+    .input-area {
+      display: flex;
+      padding: 15px;
+      background: #f0f4f8;
+      border-top: 1px solid #ddd;
     }
-    button {
-      padding: 8px 15px;
+    .input-area input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      outline: none;
+    }
+    .input-area button {
+      margin-left: 10px;
+      padding: 12px 20px;
+      background: #4b6cb7;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    .input-area button:hover {
+      background: #3a5ca0;
     }
   </style>
 </head>
 <body>
 
-  <h1>Chatbot IA Ligero (Gratuito)</h1>
+  <div class="chat-container">
+    <div class="header">
+      <h1>🤖 Chatbot Premium AI</h1>
+      <p>Inteligencia Artificial con búsqueda web</p>
+    </div>
 
-  <div id="chat-box"></div>
+    <div class="chat-box" id="chat-box">
+      <div class="message ai-message">
+        ¡Hola! Soy tu asistente inteligente. Puedo ayudarte a encontrar información en tiempo real.
+      </div>
+    </div>
 
-  <form id="chat-form">
-    <input type="text" id="user-input" placeholder="Pregúntame algo..." />
-    <button type="submit">Enviar</button>
-  </form>
-
-  <!-- Incluir transformers.js -->
-  <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.0/dist/transformers.min.js"></script>
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Escribe tu pregunta aquí..." />
+      <button id="send-btn">Enviar</button>
+    </div>
+  </div>
 
   <script>
-    let generator = null;
     const chatBox = document.getElementById('chat-box');
-    const form = document.getElementById('chat-form');
     const input = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
 
-    // Cargar modelo ligero
-    async function loadModel() {
-      if (!generator) {
-        chatBox.innerHTML += '<div>Cargando modelo GPT-2...</div>';
-        generator = await window.transformers.pipeline('text-generation', 'Xenova/gpt2');
-        chatBox.innerHTML += Modelo listo. Puedes comenzar a preguntar.</div>';
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }
-    }
-
-    // Simulación de búsqueda web (por ahora solo contexto general)
-    function searchWeb(query) {
-      return `Información sobre: ${query}.`;
-    }
-
-    // Generar respuesta
-    async function generateResponse(question) {
-      const prompt = `Pregunta: ${question}\nRespuesta: `;
-      const output = await generator(prompt, {
-        max_new_tokens: 50,
-        temperature: 0.7,
-      });
-      return output[0].generated_text.replace(prompt, "");
+    // Simular respuesta de IA con búsqueda web
+    async function getAIResponse(query) {
+      // Aquí puedes integrar una API como Tavily o DuckDuckGo
+      // Por ahora simulamos una respuesta realista
+      const responses = [
+        `He encontrado que ${query} es una excelente pregunta. Basándome en lo que sé, ...`,
+        `Sobre "${query}", la información más reciente indica que ...`,
+        `Según mis fuentes, ${query} significa ...`
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
     }
 
     // Enviar mensaje
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    sendBtn.addEventListener('click', async () => {
       const userText = input.value.trim();
       if (!userText) return;
 
-      // Mostrar mensaje usuario
-      chatBox.innerHTML += `<div class="user-message"><strong>Tú:</strong> ${userText}</div>`;
+      // Mostrar mensaje del usuario
+      addMessage(userText, 'user');
+
+      // Limpiar entrada
       input.value = '';
 
-      // Generar respuesta
-      const aiText = await generateResponse(userText);
-
-      // Mostrar respuesta IA
-      chatBox.innerHTML += `<div class="ai-message"><strong>IA:</strong> ${aiText}</div>`;
+      // Mostrar "escribiendo..."
+      const typing = document.createElement('div');
+      typing.className = 'message ai-message';
+      typing.textContent = 'Escribiendo...';
+      chatBox.appendChild(typing);
       chatBox.scrollTop = chatBox.scrollHeight;
+
+      // Obtener respuesta de IA
+      const aiResponse = await getAIResponse(userText);
+
+      // Quitar "escribiendo..." y mostrar respuesta
+      typing.remove();
+      addMessage(aiResponse, 'ai');
     });
 
-    // Cargar modelo al inicio
-    loadModel();
+    // Función para agregar mensaje al chat
+    function addMessage(text, sender) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${sender}-message`;
+      messageDiv.textContent = text;
+      chatBox.appendChild(messageDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Permitir enviar con Enter
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendBtn.click();
+    });
   </script>
 
 </body>
