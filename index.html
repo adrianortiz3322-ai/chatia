@@ -72,6 +72,8 @@
       gap: 16px;
       padding: 20px 0;
       overflow-y: auto;
+      position: sticky; /* ← ESTA LÍNEA NO LA TOQUES */
+      top: 0;
     }
 
     /* Saludo con gradiente animado */
@@ -303,6 +305,20 @@
       box-shadow: 0 0 12px rgba(0, 242, 211, 0.5);
     }
 
+    /* Botón adjuntar archivo */
+    .attach-btn {
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      color: #e0e0ff;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .attach-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
     /* Footer */
     .footer {
       display: flex;
@@ -373,17 +389,16 @@
     <div class="model-selector">
       <div class="model-btn" id="model-btn">⚡ Seleccionar modelo</div>
       <div class="model-menu" id="model-menu">
-        <div class="model-item" data-model="code">💻 Code</div>
-        <div class="model-item" data-model="think">🧠 Think</div>
-        <div class="model-item" data-model="chat">💬 Chat</div>
-        <div class="model-item" data-model="vision">👁️ Vision</div>
-        <div class="model-item" data-model="audio">🎧 Audio</div>
+        <div class="model-item" data-model="code">💻 Oclade Code</div>
+        <div class="model-item" data-model="think">🧠 Oclade Think</div>
+        <div class="model-item" data-model="chat">💬 Oclade Chat Pro</div>
       </div>
     </div>
 
-    <!-- Input -->
+    <!-- Input con botón adjuntar -->
     <div class="input-area">
       <input type="text" id="user-input" placeholder="Escribe tu mensaje..." />
+      <button class="attach-btn" id="attach-btn">📎</button>
       <button id="send-btn">Enviar</button>
     </div>
 
@@ -482,6 +497,26 @@
       if (!modelBtn.contains(e.target) && !modelMenu.contains(e.target)) {
         modelBtn.classList.remove('open');
         modelMenu.classList.remove('open');
+      }
+    });
+
+    // Botón adjuntar archivo
+    const attachBtn = document.getElementById('attach-btn');
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*,application/pdf,.doc,.docx,.txt';
+    fileInput.style.display = 'none';
+    document.body.appendChild(fileInput);
+
+    attachBtn.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        alert(`Archivo adjuntado: ${file.name}`);
+        // Aquí puedes enviar el archivo a través de FormData o leerlo como URL
       }
     });
 
