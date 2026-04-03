@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Chatbot IA con Búsqueda Web</title>
+  <title>Chatbot IA Ligero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -35,7 +35,7 @@
 </head>
 <body>
 
-  <h1>Chatbot IA con Búsqueda Web (Gratuito)</h1>
+  <h1>Chatbot IA Ligero (Gratuito)</h1>
 
   <div id="chat-box"></div>
 
@@ -53,36 +53,29 @@
     const form = document.getElementById('chat-form');
     const input = document.getElementById('user-input');
 
-    // Cargar modelo
+    // Cargar modelo ligero
     async function loadModel() {
       if (!generator) {
-        chatBox.innerHTML += '<div>Cargando modelo... (espera unos segundos)</div>';
-        generator = await window.transformers.pipeline('text-generation', 'Xenova/mistral-7b-instruct-v0.2');
-        chatBox.innerHTML += '<div>✅ Modelo listo. Puedes comenzar a preguntar.</div>';
+        chatBox.innerHTML += '<div>Cargando modelo GPT-2...</div>';
+        generator = await window.transformers.pipeline('text-generation', 'Xenova/gpt2');
+        chatBox.innerHTML += Modelo listo. Puedes comenzar a preguntar.</div>';
         chatBox.scrollTop = chatBox.scrollHeight;
       }
     }
 
-    // Buscar en DuckDuckGo
-    async function searchWeb(query) {
-      try {
-        const res = await fetch(`https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json`);
-        const data = await res.json();
-        const results = data.RelatedTopics.slice(0, 3).map(r => r.Text).filter(Boolean).join(". ");
-        return results || "No encontré resultados.";
-      } catch (e) {
-        return "Error buscando en web.";
-      }
+    // Simulación de búsqueda web (por ahora solo contexto general)
+    function searchWeb(query) {
+      return `Información sobre: ${query}.`;
     }
 
     // Generar respuesta
-    async function generateResponse(context, question) {
-      const prompt = `Usando este contexto:\n${context}\n\nResponde la siguiente pregunta: ${question}`;
+    async function generateResponse(question) {
+      const prompt = `Pregunta: ${question}\nRespuesta: `;
       const output = await generator(prompt, {
-        max_new_tokens: 150,
+        max_new_tokens: 50,
         temperature: 0.7,
       });
-      return output[0].generated_text;
+      return output[0].generated_text.replace(prompt, "");
     }
 
     // Enviar mensaje
@@ -95,11 +88,8 @@
       chatBox.innerHTML += `<div class="user-message"><strong>Tú:</strong> ${userText}</div>`;
       input.value = '';
 
-      // Buscar en web
-      const context = await searchWeb(userText);
-
       // Generar respuesta
-      const aiText = await generateResponse(context, userText);
+      const aiText = await generateResponse(userText);
 
       // Mostrar respuesta IA
       chatBox.innerHTML += `<div class="ai-message"><strong>IA:</strong> ${aiText}</div>`;
