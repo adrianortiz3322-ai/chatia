@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>OcladeAI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       margin: 0;
@@ -18,11 +18,10 @@
       height: 100vh;
       overflow: hidden;
       position: relative;
-      -webkit-text-size-adjust: 100%;
     }
 
-    /* Partículas — canvas nativo */
-    #particles-canvas {
+    /* Partículas */
+    #particles-js {
       position: absolute;
       top: 0;
       left: 0;
@@ -39,20 +38,19 @@
       max-width: 400px;
       height: 100vh;
       margin: 0 auto;
+      padding: 20px;
       display: flex;
       flex-direction: column;
     }
 
-    /* Título fijo arriba */
+    /* Título centrado arriba */
     .header {
       text-align: center;
-      padding: 16px 0;
-      background: rgba(10, 10, 20, 0.7);
-      border-bottom: 1px solid rgba(80, 80, 120, 0.3);
-      z-index: 20;
+      margin-bottom: 30px;
+      padding-top: 10px;
     }
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 700;
       background: linear-gradient(90deg, #00f2d3, #6a11cb);
       -webkit-background-clip: text;
@@ -64,46 +62,62 @@
       100% { transform: scale(1.02); }
     }
 
-    /* Área de mensajes — fija entre header e input */
-    .messages-area {
+    /* Contenido del chat */
+    .chat-content {
       flex: 1;
-      overflow-y: auto;
-      padding: 20px 20px 0;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 16px;
-      z-index: 10;
+      padding: 20px 0;
+      overflow-y: auto;
     }
 
-    /* Saludo inicial */
-    .initial-message {
-      text-align: center;
-      max-width: 85%;
-      margin: 0 auto;
-    }
-    .initial-message h2 {
+    /* Saludo con gradiente animado */
+    .greeting {
       font-size: 2.2rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #00f2d3, #6a11cb, #a1c4fd);
+      text-align: center;
+      background: linear-gradient(90deg, #00f2d3, #6a11cb, #a1c4fd, #00f2d3);
       background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: gradientShift 6s ease infinite;
-      margin-bottom: 8px;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    .initial-message p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-      margin-bottom: 12px;
+
+    /* Texto con efecto typewriter */
+    .typewriter-container {
+      text-align: center;
+      margin-top: 8px;
     }
-    .initial-message .date {
+    .typewriter {
+      font-size: 1.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00f2d3;
+      animation: typing 2.2s steps(20, end), blink-caret 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #00f2d3; }
+    }
+
+    /* Fecha actual */
+    .date-info {
       font-size: 0.9rem;
       color: #aaa;
+      text-align: center;
+      margin-top: 10px;
     }
 
     /* Mensaje del bot */
@@ -121,24 +135,23 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
-    /* Contenedor con avatar */
+    /* Contenedor de mensaje con avatar */
     .msg-with-avatar {
       display: flex;
       gap: 12px;
       align-items: flex-start;
+      width: 100%;
+      margin-bottom: 12px;
     }
 
-    /* Modelo 3D pequeño (anillo) */
+    /* Anillo doble con puntos giratorios */
     .ring-avatar {
       width: 36px;
       height: 36px;
       position: relative;
-      animation: float 3s ease-in-out infinite;
+      animation: spinRing 4s linear infinite;
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-6px) rotate(6deg); }
-    }
+
     .ring {
       position: absolute;
       top: 0;
@@ -147,9 +160,11 @@
       height: 100%;
       border: 2px solid transparent;
       border-radius: 50%;
+      animation: rotateRing 6s linear infinite;
     }
     .ring.outer {
-      border-image: conic-gradient(#00f2d3, #6a11cb, #a1c4fd, #00f2d) 1;
+      border-image: conic-gradient(#00f2d3, #6a11cb, #a1c4fd, #00f2d3) 1;
+      animation-duration: 6s;
     }
     .ring.inner {
       width: 60%;
@@ -157,12 +172,10 @@
       top: 20%;
       left: 20%;
       border-image: conic-gradient(#6a11cb, #a1c4fd, #00f2d3, #6a11cb) 1;
-      animation: spin 4s linear infinite;
+      animation-duration: 4s;
+      animation-direction: reverse;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+
     .dot {
       position: absolute;
       width: 6px;
@@ -174,21 +187,30 @@
       transform: translateX(-50%);
       box-shadow: 0 0 8px #00f2d3;
     }
-    .dot:nth-child(2) { transform: translateX(-50%) rotate(72); top: -3px; }
+    .dot:nth-child(2) { transform: translateX(-50%) rotate(72deg); top: -3px; }
     .dot:nth-child(3) { transform: translateX(-50%) rotate(144deg); top: -3px; }
     .dot:nth-child(4) { transform: translateX(-50%) rotate(216deg); top: -3px; }
     .dot:nth-child(5) { transform: translateX(-50%) rotate(288deg); top: -3px; }
 
-    /* Mensaje del usuario */
+    @keyframes spinRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes rotateRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Mensaje del usuario (sin avatar) */
     .user-message {
       background: linear-gradient(90deg, #2575fc, #6a11cb);
       color: white;
       align-self: flex-end;
     }
 
-    /* Botón desplegable — fijo arriba del input */
+    /* Botón desplegable */
     .model-selector {
-      padding: 0 20px 10px;
+      margin: 20px 0;
     }
     .model-btn {
       width: 100%;
@@ -207,7 +229,7 @@
     .model-btn:hover {
       background: rgba(255, 255, 255, 0.15);
     }
-    .modelafter {
+    .model-btn::after {
       content: "▼";
       font-size: 0.7rem;
     }
@@ -250,19 +272,14 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
-    /* Input — fijo abajo, con padding para teclado */
+    /* Input */
     .input-area {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 20px;
-      background: rgba(10, 10, 20, 0.9);
-      border-top: 1px solid rgba(80, 80, 120, 0.3);
-      z-index: 20;
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
     }
     .input-area input {
-      width: 100%;
+      flex: 1;
       padding: 14px 20px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
@@ -272,7 +289,6 @@
       outline: none;
     }
     .input-area button {
-      margin-left: 10px;
       padding: 14px 22px;
       background: linear-gradient(90deg, #00f2d3, #6a11cb);
       color: white;
@@ -287,35 +303,70 @@
       box-shadow: 0 0 12px rgba(0, 242, 211, 0.5);
     }
 
-    /* Para iOS: evitar que el input suba el chat */
-    @supports (-webkit-touch-callout: none) {
-      .messages-area {
-        padding-bottom: 20px; /* espacio para el input fijo */
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      margin-top: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+    .footer-icon {
+      width: 20px;
+      height: 20px;
+      background: #00f2d3;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .link {
+      color: #00f2d3;
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .app {
+        padding: 16px;
       }
-      .input-area {
-        padding-bottom: env(safe-area-inset-bottom, 20px);
+      .greeting {
+        font-size: 1.8rem;
+      }
+      .typewriter {
+        font-size: 1.1rem;
+      }
+      .ring-avatar {
+        width: 32px;
+        height: 32px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Partículas nativas -->
-  <canvas id="particles-canvas"></canvas>
+  <!-- Partículas -->
+  <div id="particles-js"></div>
 
   <div class="app">
-    <!-- Título fijo arriba -->
+    <!-- Título centrado -->
     <div class="header">
       <div class="logo">OcladeAI</div>
     </div>
 
-    <!-- Área de mensajes -->
-    <div class="messages-area" id="messages-area">
-      <div class="initial-message">
-        <h2 id="greeting-text">Buenas tardes</h2>
-        <p>¿En qué te puedo ayudar hoy?</p>
-        <div class="date" id="date-info">Cargando...</div>
+    <!-- Chat: contenido inicial -->
+    <div class="chat-content" id="chat-content">
+      <div class="greeting" id="greeting-text">Buenas tardes</div>
+      <div class="typewriter-container">
+        <div class="typewriter" id="help-text">¿En qué te puedo ayudar hoy?</div>
       </div>
+      <div class="date-info" id="date-info">Cargando fecha...</div>
     </div>
 
     <!-- Botón desplegable -->
@@ -330,100 +381,74 @@
       </div>
     </div>
 
-    <!-- Input fijo abajo -->
+    <!-- Input -->
     <div class="input-area">
       <input type="text" id="user-input" placeholder="Escribe tu mensaje..." />
       <button id="send-btn">Enviar</button>
     </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-icon">🤖</div>
+      <span>oclade-ia.vercel.app</span>
+    </div>
   </div>
 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // === PARTÍCULAS PROFESIONALES (NATIVAS, SIN LIBRERÍAS) ===
-    const canvas = document.getElementById('particles-canvas');
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+    // Configuración de partículas
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 70, density: { enable: true, value_area: 800 } },
+        color: { value: ["#00f2d3", "#6a11cb", "#a1c4fd", "#e0e0ff"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 2.5, random: true },
+        line_linked: {
+          enable: true,
+          distance: 120,
+          color: "#00f2d3",
+          opacity: 0.2,
+          width: 0.8
+        },
+        move: {
+          enable: true,
+          speed: 1.1,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        }
+      }
     });
 
-    const particles = [];
-    const particleCount = 80;
-    const colors = ['#00f2d3', '#6a11cb', '#a1c4fd', '#e0e0ff'];
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.6;
-        this.speedY = (Math.random() - 0.5) * 0.6;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.alpha = Math.random() * 0.5 + 0.3;
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x < 0 || this.x > width) this.speedX *= -1;
-        if (this.y < 0 || this.y > height) this.speedY *= -1;
-
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${parseInt(this.color.slice(1, 3), 16)}, ${parseInt(this.color.slice(3, 5), 16)}, ${parseInt(this.color.slice(5, 7), 16)}, ${this.alpha})`;
-        ctx.fill();
-      }
-
-      drawLines(particles) {
-        particles.forEach(other => {
-          const dx = this.x - other.x;
-          const dy = this.y - other.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 100) {
-            const opacity = 1 - dist / 100;
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(${parseInt(this.color.slice(1, 3), 16)}, ${parseInt(this.color.slice(3, 5), 16)}, ${parseInt(this.color.slice(5, 7), 16)}, ${opacity * 0.3})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(this.x, this.y);
-            ctx.lineTo(other.x, other.y);
-            ctx.stroke();
-          }
-        });
-      }
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.update();
-        p.drawLines(particles);
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    // === SALUDO Y FECHA ===
+    // Saludo dinámico
     const now = new Date();
     const hour = now.getHours();
-    const greetingEl = document.getElementById('greeting-text');
-    const dateEl = document.getElementById('date-info');
+    let greeting = "";
+    if (hour >= 6 && hour < 12) greeting = "Buenos días";
+    else if (hour >= 12 && hour < 19) greeting = "Buenas tardes";
+    else greeting = "Buenas noches";
 
-    greetingEl.textContent = 
-      hour >= 6 && hour < 12 ? "Buenos días" :
-      hour >= 12 && hour < 19 ? "Buenas tardes" : "Buenas noches";
+    document.getElementById('greeting-text').textContent = greeting;
 
+    // Fecha actual
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    dateEl.textContent = `Hoy es ${now.toLocaleDateString('es-ES', options)}`;
+    const dateStr = now.toLocaleDateString('es-ES', options);
+    document.getElementById('date-info').textContent = `Hoy es ${dateStr}`;
 
-    // === TYPOWRITER ===
-    const helpText = document.querySelector('.initial-message p');
+    // Typewriter effect para "¿En qué te puedo ayudar hoy?"
+    const helpText = document.getElementById('help-text');
     const fullText = "¿En qué te puedo ayudar hoy?";
     helpText.innerHTML = '';
     let i = 0;
@@ -433,7 +458,7 @@
       if (i >= fullText.length) clearInterval(typewriter);
     }, 80);
 
-    // === MENÚ DESPLEGABLE ===
+    // Menú desplegable
     const modelBtn = document.getElementById('model-btn');
     const modelMenu = document.getElementById('model-menu');
     const modelItems = document.querySelectorAll('.model-item');
@@ -460,21 +485,23 @@
       }
     });
 
-    // === ENVIAR MENSAJE ===
-    const input = document.getElementById('user-input');
-    const sendBtn = document.getElementById('send-btn');
-    const messagesArea = document.getElementById('messages-area');
-
+    // Función para crear el modelo 3D
     function createAvatar() {
       return `
         <div class="ring-avatar">
-          <div class="ring outer"></div>
-          <div class="ring inner"></div>
+          <div class="ring outer">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <div class="ring inner">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
         </div>
       `;
     }
 
+    // Función para agregar mensaje al chat
     function addMessage(text, isUser) {
+      const chatContent = document.getElementById('chat-content');
       const msgContainer = document.createElement('div');
       msgContainer.className = 'msg-with-avatar';
 
@@ -486,41 +513,52 @@
       message.textContent = text;
 
       if (isUser) {
+        // Mensaje del usuario: sin avatar
         msgContainer.style.flexDirection = 'row-reverse';
         msgContainer.style.justifyContent = 'flex-end';
         msgContainer.appendChild(message);
       } else {
+        // Mensaje del bot: con avatar
         const avatar = document.createElement('div');
         avatar.innerHTML = createAvatar();
         msgContainer.appendChild(avatar);
         msgContainer.appendChild(message);
       }
 
-      messagesArea.appendChild(msgContainer);
-      messagesArea.scrollTop = messagesArea.scrollHeight;
+      chatContent.appendChild(msgContainer);
+      chatContent.scrollTop = chatContent.scrollHeight;
     }
 
-    sendBtn.addEventListener('click', () => {
+    // Enviar mensaje
+    document.getElementById('send-btn').addEventListener('click', () => {
+      const input = document.getElementById('user-input');
       const text = input.value.trim();
       if (!text) return;
 
-      // Eliminar saludo inicial
-      const initial = document.querySelector('.initial-message');
-      if (initial) initial.remove();
+      // Eliminar contenido inicial si existe
+      if (document.querySelector('.greeting')) {
+        document.querySelector('.greeting').remove();
+        document.querySelector('.typewriter-container').remove();
+        document.querySelector('.date-info').remove();
+      }
 
-      // Mensaje usuario
+      // Mostrar mensaje del usuario
       addMessage(text, true);
+
+      // Limpiar input
       input.value = '';
 
-      // Respuesta bot
+      // Simular respuesta de IA después de 1.5 segundos
       setTimeout(() => {
         addMessage(`Gracias por tu mensaje: "${text}". ¿En qué más puedo ayudarte?`, false);
       }, 1500);
     });
 
-    input.addEventListener('keypress', e => {
-      if (e.key === 'Enter') sendBtn.click();
+    // Permitir enviar con Enter
+    document.getElementById('user-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') document.getElementById('send-btn').click();
     });
   </script>
+
 </body>
 </html>
