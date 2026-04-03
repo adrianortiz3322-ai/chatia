@@ -71,6 +71,7 @@
       align-items: center;
       gap: 16px;
       padding: 20px 0;
+      overflow-y: auto;
     }
 
     /* Saludo con gradiente animado */
@@ -170,7 +171,7 @@
       height: 60%;
       top: 20%;
       left: 20%;
-      border-image: conic-gradient(#6a11cb, #a1c4fd, #00f2da11cb) 1;
+      border-image: conic-gradient(#6a11cb, #a1c4fd, #00f2d3, #6a11cb) 1;
       animation-duration: 4s;
       animation-direction: reverse;
     }
@@ -382,7 +383,7 @@
 
     <!-- Input -->
     <div class="input-area">
-      <input type="text" placeholder="Escribe tu mensaje..." />
+      <input type="text" id="user-input" placeholder="Escribe tu mensaje..." />
       <button id="send-btn">Enviar</button>
     </div>
 
@@ -403,7 +404,7 @@
         color: { value: ["#00f2d3", "#6a11cb", "#a1c4fd", "#e0e0ff"] },
         shape: { type: "circle" },
         opacity: { value: 0.5, random: true },
-        size:2.5, random: true },
+        size: { value: 2.5, random: true },
         line_linked: {
           enable: true,
           distance: 120,
@@ -530,7 +531,7 @@
 
     // Enviar mensaje
     document.getElementById('send-btn').addEventListener('click', () => {
-      const input = document.querySelector('.input-area input');
+      const input = document.getElementById('user-input');
       const text = input.value.trim();
       if (!text) return;
 
@@ -554,11 +555,10 @@
     });
 
     // Permitir enviar con Enter
-    document.querySelector('.input-area input').addEventListener('keypress', (e) => {
+    document.getElementById('user-input').addEventListener('keypress', (e) => {
       if (e.key === 'Enter') document.getElementById('send-btn').click();
     });
   </script>
 
 </body>
 </html>
-
