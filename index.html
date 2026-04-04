@@ -454,7 +454,7 @@
     }, 80);
 
     // === DATOS LOCALES DE CADA MODELO ===
-    let currentModel = 'chat'; // ← Modelo por defecto
+    let currentModel = 'chat';
     let responses = {};
     let conversationHistory = []; // ← Nueva memoria conversacional
 
@@ -591,7 +591,7 @@
       conversationHistory.push({ role: isUser ? 'user' : 'assistant', content: text });
     }
 
-    // Mostrar estado de pensamiento
+    // === ANIMACIÓN DE PENSAMIENTO ===
     function showThinkingState() {
       const chatContent = document.getElementById('chat-content');
       const thinkingContainer = document.createElement('div');
@@ -613,6 +613,8 @@
       thinkingElement.innerHTML = `${states[currentState].emoji} ${states[currentState].text}`;
       thinkingElement.style.color = states[currentState].color;
 
+      const avatar = document.createElement('div');
+      avatar.innerHTML = createAvatar();
       thinkingContainer.appendChild(avatar);
       thinkingContainer.appendChild(thinkingElement);
 
