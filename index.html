@@ -130,6 +130,7 @@
       color: #e0e0ff;
       line-height: 1.5;
       animation: fadeIn 0.4s ease-out;
+      white-space: pre-wrap;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateX(-10px); }
@@ -476,13 +477,14 @@
     // === DATOS LOCALES DE CADA MODELO ===
     let currentModel = 'chat';
     let responses = {};
-    let conversationHistory = []; // ← Nueva memoria conversacional
+    let conversationHistory = [];
 
     async function loadResponses(model) {
       try {
         const response = await fetch(`oclade-${model}-responses.json`);
         const data = await response.json();
         responses = data.responses;
+        console.log("✅ Respuestas cargadas:", Object.keys(responses).length);
       } catch (error) {
         console.error("Error al cargar respuestas:", error);
         responses = {};
@@ -491,6 +493,27 @@
 
     // Cargar respuestas del modelo inicial
     loadResponses(currentModel);
+
+    // Función para buscar respuesta inteligente
+    function buscarRespuestaInteligente(texto) {
+      const textoLower = texto.toLowerCase().trim();
+      
+      // Buscar coincidencia exacta
+      if (responses[textoLower]) {
+        return responses[textoLower];
+      }
+      
+      // Buscar por palabra clave (el mensaje contiene alguna clave)
+      const keys = Object.keys(responses);
+      for (const key of keys) {
+        if (textoLower.includes(key.toLowerCase())) {
+          return responses[key];
+        }
+      }
+      
+      // Si no encuentra, responder por defecto
+      return responses["default"] || "No tengo una respuesta para eso. ¿Puedes reformularlo? Cuéntame más 🧠";
+    }
 
     // Menú modelo
     const modelBtn = document.getElementById('model-btn');
@@ -510,18 +533,16 @@
         modelBtn.classList.remove('open');
         modelMenu.classList.remove('open');
 
-        // Cambiar modelo
         currentModel = item.getAttribute('data-model');
         loadResponses(currentModel);
 
-        // Mostrar mensaje de saludo del modelo
         let greeting = '';
         if (currentModel === 'code') {
-          greeting = 'Hola, soy Oclade Code. Estoy especializado en programación.';
+          greeting = 'Hola, soy Oclade Code. Estoy especializado en programación. ¿Qué código necesitas? 💻';
         } else if (currentModel === 'think') {
-          greeting = 'Hola, soy Oclade Think. Estoy aquí para análisis profundo.';
+          greeting = 'Hola, soy Oclade Think. Estoy aquí para análisis profundo. ¿Qué quieres analizar? 🧠';
         } else if (currentModel === 'chat') {
-          greeting = 'Hola, soy Oclade Chat Pro. Estoy listo para cualquier tema.';
+          greeting = 'Hola, soy Oclade Chat Pro. Estoy listo para cualquier tema. ¿Cómo estás? 💙';
         }
         addMessage(greeting, false);
       });
@@ -534,7 +555,7 @@
       }
     });
 
-    // Adjuntar: foto, video, audio, archivo
+    // Adjuntar archivos
     const attachBtn = document.getElementById('attach-btn');
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
@@ -554,11 +575,14 @@
         else if (file.type.startsWith('video/')) type = '🎥';
         else if (file.type.startsWith('audio/')) type = '🎤';
         else type = '📁';
-        alert(`${type} Archivo adjuntado: ${file.name}`);
+        addMessage(`📎 Adjuntaste: ${type} ${file.name}`, true);
+        setTimeout(() => {
+          addMessage(`¡Recibí tu archivo "${file.name}"! 📂 ¿Quieres que lo analice o necesitas algo más?`, false);
+        }, 1500);
       }
     });
 
-    // === NUEVO AVATAR: CHIP NEURAL ===
+    // Avatar
     function createChipAvatar() {
       return `
         <div class="chip-avatar">
@@ -572,7 +596,7 @@
       `;
     }
 
-    // Agregar mensaje con animación de escritura lenta
+    // Agregar mensaje
     function addMessage(text, isUser) {
       const chatContent = document.getElementById('chat-content');
       const msgContainer = document.createElement('div');
@@ -593,119 +617,73 @@
         avatar.innerHTML = createChipAvatar();
         msgContainer.appendChild(avatar);
 
-        // Animación de escritura lenta
-        let i = 0;
+        let idx = 0;
         const timer = setInterval(() => {
-          message.textContent += text.charAt(i);
-          i++;
-          if (i > text.length) clearInterval(timer);
-        }, 50); // 50ms por letra
-
+          message.textContent += text.charAt(idx);
+          idx++;
+          if (idx >= text.length) clearInterval(timer);
+        }, 30);
         msgContainer.appendChild(message);
       }
 
       chatContent.appendChild(msgContainer);
       chatContent.scrollTop = chatContent.scrollHeight;
-
-      // Guardar mensaje en historial
       conversationHistory.push({ role: isUser ? 'user' : 'assistant', content: text });
     }
 
-    // === ANIMACIÓN DE PENSAMIENTO — A LA IZQUIERDA ===
+    // Pensamiento
     function showThinkingState() {
       const chatContent = document.getElementById('chat-content');
       const thinkingContainer = document.createElement('div');
       thinkingContainer.className = 'msg-with-avatar';
+      thinkingContainer.id = 'thinking-temp';
 
-      // Avatar del chip
       const avatar = document.createElement('div');
       avatar.innerHTML = createChipAvatar();
       thinkingContainer.appendChild(avatar);
 
-      // Texto animado
       const thinkingElement = document.createElement('div');
       thinkingElement.className = 'thinking-state';
-
-      // Estados animados
-      const states = [
-        '🧠 Pensando...',
-        '🔍 Analizando...',
-        '💻 Codificando...',
-        '💡 Ideando...',
-        '📝 Escribiendo...'
-      ];
-
-      let currentState = 0;
-      thinkingElement.textContent = states[currentState];
-
+      const states = ['🧠 Pensando...', '🔍 Analizando...', '💻 Procesando...', '💡 Ideando...'];
+      let stateIdx = 0;
+      thinkingElement.textContent = states[stateIdx];
       thinkingContainer.appendChild(thinkingElement);
       chatContent.appendChild(thinkingContainer);
       chatContent.scrollTop = chatContent.scrollHeight;
 
-      // Cambiar estados cada 1.2s
-      const stateInterval = setInterval(() => {
-        currentState = (currentState + 1) % states.length;
-        thinkingElement.textContent = states[currentState];
-      }, 1200);
+      const interval = setInterval(() => {
+        stateIdx = (stateIdx + 1) % states.length;
+        thinkingElement.textContent = states[stateIdx];
+      }, 1000);
 
-      // Eliminar estado después de 1.2s
-      setTimeout(() => {
-        clearInterval(stateInterval);
-        if (thinkingContainer.parentNode) {
-          thinkingContainer.remove();
-        }
-      }, 1200);
-
-      return thinkingContainer;
+      return { container: thinkingContainer, interval };
     }
 
-    // Enviar
+    // Enviar mensaje
     document.getElementById('send-btn').addEventListener('click', async () => {
       const input = document.getElementById('user-input');
-      const text = input.value.trim().toLowerCase();
+      const text = input.value.trim();
       if (!text) return;
 
       if (document.querySelector('.greeting')) {
-        document.querySelector('.greeting').remove();
-        document.querySelector('.typewriter-container').remove();
-        document.querySelector('.date-info').remove();
+        document.querySelector('.greeting')?.remove();
+        document.querySelector('.typewriter-container')?.remove();
+        document.querySelector('.date-info')?.remove();
       }
 
       addMessage(text, true);
       input.value = '';
 
-      // Mostrar estado de pensamiento a la izquierda
-      showThinkingState();
-
-      // Buscar respuesta
-      let response = responses[text];
-
-      if (!response) {
-        // Si no encuentra respuesta exacta, buscar coincidencia parcial
-        const keys = Object.keys(responses);
-        for (const key of keys) {
-          if (text.includes(key)) {
-            response = responses[key];
-            break;
-          }
-        }
-      }
-
-      if (!response) {
-        // Si no encuentra nada, usar respuesta por defecto
-        response = "No tengo una respuesta para eso. ¿Puedes reformularlo?";
-      }
+      const { container, interval } = showThinkingState();
 
       setTimeout(() => {
-        // Eliminar estado de pensamiento
-        const thinking = document.querySelector('.thinking-state');
-        if (thinking) thinking.closest('.msg-with-avatar').remove();
-
-        addMessage(response, false);
-      }, 2500); // 2.5s después de pensar
+        clearInterval(interval);
+        container.remove();
+        const respuesta = buscarRespuestaInteligente(text);
+        addMessage(respuesta, false);
+      }, 2000);
     });
 
-    // Enter = enviar
     document.getElementById('user-input').addEventListener('keypress', e => {
       if (e.key === 'Enter') document.getElementById('send-btn').click();
     });
