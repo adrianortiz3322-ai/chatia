@@ -144,40 +144,60 @@
       margin-bottom: 16px;
     }
 
-    /* Modelo 3D */
-    .ring-avatar {
+    /* === NUEVO MODELO 3D: CHIP NEURAL PRO === */
+    .chip-avatar {
       width: 36px;
       height: 36px;
       position: relative;
-      animation: spinRing 4s linear infinite;
+      animation: pulseChip 2s infinite;
     }
-    .ring {
+    .chip-core {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      border: 2px solid transparent;
-      border-radius: 50%;
-      animation: rotateRing 6s linear infinite;
+      background: radial-gradient(circle, #00f2d3 0%, #00a8d3 70%, #006680 100%);
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0, 242, 211, 0.6);
+      animation: rotateChip 4s linear infinite;
     }
-    .ring.outer {
-      border-image: conic-gradient(#00f2d3, #6a11cb, #a1c4fd, #00f2d3) 1;
-      animation-duration: 6s;
+    .chip-core::before,
+    .chip-core::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      background: inherit;
+      opacity: 0.6;
+      filter: blur(8px);
+      animation: float 3s ease-in-out infinite;
     }
-    .ring.inner {
-      width: 60%; height: 60%; top: 20%; left: 20%;
-      border-image: conic-gradient(#6a11cb, #a1c4fd, #00f2d3, #6a11cb) 1;
-      animation-duration: 4s;
-      animation-direction: reverse;
+    .chip-core::before {
+      transform: translate(-30%, -30%);
+      animation-delay: -1.5s;
     }
-    .dot {
-      position: absolute; width: 6px; height: 6px; background: #00f2d3; border-radius: 50%;
-      top: -3px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 8px #00f2d3;
+    .chip-core::after {
+      transform: translate(30%, 30%);
+      animation-delay: -0.5s;
     }
-    .dot:nth-child(2) { transform: translateX(-50%) rotate(72deg); top: -3px; }
-    .dot:nth-child(3) { transform: translateX(-50%) rotate(144deg); top: -3px; }
-    .dot:nth-child(4) { transform: translateX(-50%) rotate(216deg); top: -3px; }
-    .dot:nth-child(5) { transform: translateX(-50%) rotate(288deg); top: -3px; }
-    @keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @keyframes rotateRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .chip-pin {
+      position: absolute; width: 3px; height: 8px; background: #00f2d3; border-radius: 2px;
+    }
+    .pin-top { top: -8px; left: 50%; transform: translateX(-50%); }
+    .pin-right { top: 50%; right: -8px; transform: translateY(-50%); }
+    .pin-bottom { bottom: -8px; left: 50%; transform: translateX(-50%); }
+    .pin-left { top: 50%; left: -8px; transform: translateY(-50%); }
+    @keyframes pulseChip {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes rotateChip {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(8px, -8px) rotate(180deg); }
+    }
 
     .user-message {
       background: linear-gradient(90deg, #2575fc, #6a11cb);
@@ -318,7 +338,7 @@
       text-decoration: none;
     }
 
-    /* Estado de pensamiento */
+    /* Estado de pensamiento — a la izquierda */
     .thinking-state {
       display: flex;
       align-items: center;
@@ -341,7 +361,7 @@
       .app { padding: 16px; }
       .greeting { font-size: 1.8rem; }
       .typewriter { font-size: 1.1rem; }
-      .ring-avatar { width: 32px; height: 32px; }
+      .chip-avatar { width: 32px; height: 32px; }
     }
   </style>
 </head>
@@ -538,15 +558,15 @@
       }
     });
 
-    // Función crear avatar
-    function createAvatar() {
+    // === NUEVO AVATAR: CHIP NEURAL ===
+    function createChipAvatar() {
       return `
-        <div class="ring-avatar">
-          <div class="ring outer">
-            <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-          </div>
-          <div class="ring inner">
-            <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="chip-avatar">
+          <div class="chip-core">
+            <div class="chip-pin pin-top"></div>
+            <div class="chip-pin pin-right"></div>
+            <div class="chip-pin pin-bottom"></div>
+            <div class="chip-pin pin-left"></div>
           </div>
         </div>
       `;
@@ -570,7 +590,7 @@
         msgContainer.appendChild(message);
       } else {
         const avatar = document.createElement('div');
-        avatar.innerHTML = createAvatar();
+        avatar.innerHTML = createChipAvatar();
         msgContainer.appendChild(avatar);
 
         // Animación de escritura lenta
@@ -591,56 +611,56 @@
       conversationHistory.push({ role: isUser ? 'user' : 'assistant', content: text });
     }
 
-    // === ANIMACIÓN DE PENSAMIENTO ===
+    // === ANIMACIÓN DE PENSAMIENTO — A LA IZQUIERDA ===
     function showThinkingState() {
       const chatContent = document.getElementById('chat-content');
       const thinkingContainer = document.createElement('div');
       thinkingContainer.className = 'msg-with-avatar';
 
+      // Avatar del chip
+      const avatar = document.createElement('div');
+      avatar.innerHTML = createChipAvatar();
+      thinkingContainer.appendChild(avatar);
+
+      // Texto animado
       const thinkingElement = document.createElement('div');
       thinkingElement.className = 'thinking-state';
 
       // Estados animados
       const states = [
-        { emoji: '🧠', text: 'Pensando...', color: '#00f2d3' },
-        { emoji: '🔍', text: 'Analizando...', color: '#6a11cb' },
-        { emoji: '💻', text: 'Codificando...', color: '#a1c4fd' },
-        { emoji: '💡', text: 'Ideando...', color: '#00f2d3' },
-        { emoji: '📝', text: 'Escribiendo...', color: '#6a11cb' }
+        '🧠 Pensando...',
+        '🔍 Analizando...',
+        '💻 Codificando...',
+        '💡 Ideando...',
+        '📝 Escribiendo...'
       ];
 
       let currentState = 0;
-      thinkingElement.innerHTML = `${states[currentState].emoji} ${states[currentState].text}`;
-      thinkingElement.style.color = states[currentState].color;
+      thinkingElement.textContent = states[currentState];
 
-      const avatar = document.createElement('div');
-      avatar.innerHTML = createAvatar();
-      thinkingContainer.appendChild(avatar);
       thinkingContainer.appendChild(thinkingElement);
-
       chatContent.appendChild(thinkingContainer);
       chatContent.scrollTop = chatContent.scrollHeight;
 
-      // Cambiar estados cada 1.5s
+      // Cambiar estados cada 1.2s
       const stateInterval = setInterval(() => {
         currentState = (currentState + 1) % states.length;
-        thinkingElement.innerHTML = `${states[currentState].emoji} ${states[currentState].text}`;
-        thinkingElement.style.color = states[currentState].color;
-      }, 1500);
+        thinkingElement.textContent = states[currentState];
+      }, 1200);
 
-      // Eliminar estado después de 1.5s
+      // Eliminar estado después de 1.2s
       setTimeout(() => {
         clearInterval(stateInterval);
         if (thinkingContainer.parentNode) {
           thinkingContainer.remove();
         }
-      }, 1500);
+      }, 1200);
 
       return thinkingContainer;
     }
 
     // Enviar
-    document.getElementById('send-btn').addEventListener('click', () => {
+    document.getElementById('send-btn').addEventListener('click', async () => {
       const input = document.getElementById('user-input');
       const text = input.value.trim().toLowerCase();
       if (!text) return;
@@ -654,7 +674,7 @@
       addMessage(text, true);
       input.value = '';
 
-      // Mostrar estado de pensamiento
+      // Mostrar estado de pensamiento a la izquierda
       showThinkingState();
 
       // Buscar respuesta
