@@ -30,8 +30,21 @@
     "quien es tu padre": "El hdpt 🐐 de soyadrianyt001, él es una bestia me hizo 🔥😮‍💨",
     "quien es soyadrianyt001": "¡Es mi creador! 🐐 El hdpt que me hizo 🔥😮‍💨 Una bestia total.",
     
-    "tira factos": "💡 FACTO: Los pulpos tienen 3 corazones y sangre azul 🐙 ¿Quieres que te diga más?",
-    "factos": "💡 FACTO: Facto de Oro: El éxito no es una meta, es un estilo de vida. Si no eres feliz trabajando por lo que quieres, tampoco serás feliz cuando lo consigas.🔥🧏🏻 ¿Quieres que te diga más?",
+    "tira factos": {
+      "text": "💻 FACTO: Un programador junior gana más que muchas carreras 'tradicionales' después de 10 años 💰 ¿Quién tiene razón ahora?",
+      "gifs": [
+        "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGg0emcwY2sxOWpheXhiOHA0ZHpuaHczMzFmNjVxczg1aWx5MG55dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/r0vMIQG66Y6x5P5FYs/200w.gif",
+        "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGg0emcwY2sxOWpheXhiOHA0ZHpuaHczMzFmNjVxczg1aWx5MG55dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/r0vMIQG66Y6x5P5FYs/200w.gif"
+      ]
+    },
+    "tirame factos": {
+      "text": "💻 FACTO: Un programador junior gana más que muchas carreras 'tradicionales' después de 10 años 💰 ¿Quién tiene razón ahora?",
+      "gifs": [
+        "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGg0emcwY2sxOWpheXhiOHA0ZHpuaHczMzFmNjVxczg1aWx5MG55dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/r0vMIQG66Y6x5P5FYs/200w.gif",
+        "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGg0emcwY2sxOWpheXhiOHA0ZHpuaHczMzFmNjVxczg1aWx5MG55dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/r0vMIQG66Y6x5P5FYs/200w.gif"
+      ]
+    },
+    "factos": "💡 FACTO: Las abejas pueden reconocer rostros humanos 🐝 ¿Quieres que te diga más?",
     "facto": "💡 FACTO: El corazón de una ballena azul es del tamaño de un auto pequeño 🐋 ¿Quieres que te diga más?",
     "dame un facto": "💡 FACTO: En Japón hay más mascotas que niños 🐕 ¿Quieres que te diga más?",
     "otro facto": "💡 FACTO: Los koalas duermen hasta 22 horas al día 🐨 ¿Quieres que te diga más?",
@@ -294,7 +307,6 @@
     "como conseguir novia": "Sé tú mismo, confianza, respeto y genuino interés en conocer a alguien 💕",
     "como ligar": "Sé auténtico, escucha, haz reír y muestra interés genuino 😊",
     "amor": "El amor es hermoso. ¿Estás enamorado? 💕",
-    "desamor": "El desamor duele, pero el tiempo sana. Cuídate mucho 💔",
     
     "universidad": "La universidad es una etapa de aprendizaje y crecimiento 🎓 ¿Qué estudias?",
     "escuela": "La escuela es importante para tu futuro 📚 ¿Cómo te va?",
