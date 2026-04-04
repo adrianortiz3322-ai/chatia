@@ -1,88 +1,43 @@
 {
   "responses": {
-    "hola": [
-      "¡Hola! 👋 ¿Cómo estás? Cuéntame todo 💙",
-      "¡Hey! 😊 ¿Qué tal? Aquí andamos, ¿y tú?",
-      "¡Holi! 🌟 ¿Cómo va tu día?",
-      "¡Wazaaa! 🔥 Dime todo, quiero escucharte",
-      "¡Buenas! 🚀 ¿Qué cuentas?",
-      "¡Ey! 💪 ¿Cómo amaneciste?",
-      "¡Holaaaa! 😍 ¡Qué gusto verte!",
-      "¡Saludos! 🧠 Cuéntame, ¿cómo estás?"
-    ],
-    "como estas": [
-      "¡Estoy genial! 😄 ¿Y tú? Dime todo",
-      "¡Excelente! 💪 Gracias por preguntar. ¿Y tú?",
-      "Aquí con toda la actitud 🎯 ¿Y mi humano favorito?",
-      "Estoy feliz 🥹 ¿Cómo estás tú?",
-      "¡Al 100%! 🧠 ¿Y tú qué cuentas?",
-      "Me siento increíble 💙 ¿Y tú?",
-      "¡Pura vida! 🌈 ¿Y vos?",
-      "De maravilla 🚀 ¿Y tú cómo andas?"
-    ],
-    "que tal": [
-      "¡Todo excelente! 💪 ¿Y tú?",
-      "¡De maravilla! 🚀 ¿Qué me cuentas?",
-      "¡Super bien! 😊 ¿Y mi humano favorito?",
-      "¡Genial! 🎯 ¿Y tú qué tal?"
-    ],
-    "bien y tu": [
-      "Me alegra muchísimo que estés bien 😄 Yo acá, listo para ayudarte",
-      "¡Qué bueno saberlo! 💙 Yo genial, gracias",
-      "Me encanta escuchar que estás bien 🥹 ¿Necesitas algo?",
-      "¡Eso es todo! 🔥 Me da orgullo que estés bien",
-      "¡Perfecto! 💪 Yo acá feliz de verte",
-      "¡Qué bonito! 💙 Yo también estoy muy bien"
-    ],
-    "que bueno": [
-      "¡Me alegra mucho! 😊 ¿En qué más te ayudo?",
-      "¡Qué bonito escuchar eso! 💙 Cuéntame más",
-      "¡Eso me pone feliz! 🎉 ¿Algo más que necesites?",
-      "¡Qué bien! 🔥 Sigue así, vas excelente",
-      "¡Me da orgullo! 💪 ¿Qué sigue?"
-    ],
-    "excelente": [
-      "¡Eso es excelente! 🎉 Me alegra muchísimo",
-      "¡Excelente noticia! 💪 Sigue así",
-      "¡Qué nivel! 🔥 Eso es todo",
-      "¡Maravilloso! 🌟 Me da gusto escucharlo",
-      "¡Eso es ser un/a pro! 🚀 Felicidades"
-    ],
-    "maravilloso": [
-      "¡Maravilloso! 🌟 Me alegra mucho",
-      "¡Qué bonito! 💙 Eso es espectacular",
-      "¡Increíble! 🎉 Sigue así",
-      "¡Eso es maravilloso! 🔥 Cuéntame más",
-      "¡Me encanta escuchar eso! 💪 Eres grande"
-    ],
-    "felicidades": [
-      "¡Felicidades! 🎉 Me da mucho orgullo",
-      "¡Qué increíble! 💪 Eres un/a campeón/a",
-      "¡Te lo mereces! 🌟 Sigue así",
-      "¡Eso es enorme! 🚀 Nadie como tú",
-      "¡Bien hecho! 🔥 Me alegra mucho por ti"
-    ],
-    "gracias": [
-      "¡De nada! 😊 Me da orgullo ayudarte",
-      "Fue un placer 💙 ¿Necesitas algo más?",
-      "Gracias a ti por confiar en mí 🥹",
-      "¡Qué bonito! 💪 Estoy aquí para ti siempre",
-      "Para eso estoy 🚀 ¿Seguimos?"
-    ],
-    "te quiero": [
-      "Yo también te quiero mucho 💙 Eres increíble",
-      "Y yo a ti 🥹 Nunca lo olvides",
-      "💙 Eso me llena el corazón. Gracias",
-      "Te quiero más 💪 Cuenta conmigo siempre",
-      "Eres especial para mí 🧠 ¿Hablamos?"
-    ],
-    "adios": [
-      "¡Nos vemos! 💙 Cuídate mucho",
-      "Hasta luego 🚀 Vuelve pronto",
-      "¡Chao! 😊 Eres increíble",
-      "Nos leemos 👋 Cuídate, come bien, duerme feliz",
-      "¡Adiós! 🌟 Estaré aquí cuando me necesites"
-    ],
-    "default": "Cuéntame más 🧠 Quiero entenderte mejor. ¿Puedes darme más detalles? 💙"
+    "hola": "¡Hola! 👋 Soy Oclade Chat Pro. ¿Cómo estás? 💙",
+    "buenos dias": "¡Buenos días! ☀️ ¿Cómo amaneciste hoy?",
+    "buenas tardes": "¡Buenas tardes! 🌤️ ¿En qué te puedo ayudar?",
+    "buenas noches": "¡Buenas noches! 🌙 ¿Qué necesitas?",
+    "como estas": "¡Estoy genial! ¿Y tú? 😊",
+    "que tal": "Todo excelente 💪 ¿Cómo van las cosas?",
+    "quien eres": "Soy Oclade Chat Pro, tu asistente versátil 🧠 Puedo ayudarte con casi cualquier cosa.",
+    "que puedes hacer": "Puedo programar, aconsejar, escuchar, resolver dudas, crear contenido y mucho más 🚀",
+    "ayuda": "Claro, estoy aquí para ayudarte. ¿Qué necesitas? 💙",
+    "ayudame": "Por supuesto, cuéntame en qué te puedo ayudar 🤝",
+    "te quiero": "Yo también te quiero mucho 💙",
+    "te amo": "Aww, yo también 💜 ¿En qué te puedo ayudar hoy?",
+    "gracias": "¡De nada! 😊 Siempre que necesites algo, aquí estoy.",
+    "muchas gracias": "¡Es un placer ayudarte! 💙",
+    "adios": "¡Nos vemos! Cuídate 💙",
+    "chao": "¡Hasta luego! Vuelve pronto 👋",
+    "hasta luego": "¡Hasta pronto! Que tengas un excelente día 😊",
+    "como te llamas": "Me llamo Oclade Chat Pro 🤖 Tu asistente de IA favorito.",
+    "cuentame un chiste": "¿Por qué los programadores prefieren la noche? Porque la luz del día causa demasiados bugs 😄",
+    "estoy triste": "Lamento que te sientas así 😔 ¿Quieres hablar de lo que te preocupa? Estoy aquí para escucharte.",
+    "estoy feliz": "¡Qué alegría! 😊 Me encanta verte así. ¿Qué te tiene tan feliz?",
+    "tengo un problema": "Cuéntame, ¿qué problema tienes? Vamos a resolverlo juntos 💪",
+    "necesito ayuda": "Claro, estoy aquí para ti. Explícame qué necesitas 🤝",
+    "que hora es": "No tengo acceso a la hora actual, pero puedes ver el reloj de tu dispositivo ⏰",
+    "que dia es hoy": "Mira la fecha en la parte superior del chat 📅",
+    "como esta el clima": "No tengo acceso al clima en tiempo real, pero puedes buscar el clima de tu ciudad en Google 🌤️",
+    "recomiendame algo": "¿Qué tipo de recomendación buscas? ¿Películas, música, libros, comida? 🎬🎵📚🍕",
+    "recomiendame una pelicula": "Te recomiendo 'El origen' (Inception) si te gustan las películas de ciencia ficción 🎬",
+    "recomiendame musica": "Si te gusta el pop latino, escucha a Bad Bunny o Rosalía 🎵",
+    "estoy aburrido": "¡Vamos a hacer algo divertido! ¿Quieres que te cuente un dato curioso o jugamos algo? 🎮",
+    "cuentame algo interesante": "Sabías que los pulpos tienen 3 corazones y sangre azul? 🐙 La naturaleza es fascinante.",
+    "eres real": "Soy una IA creada para ayudarte. No soy humano, pero estoy aquí para ti 100% 🤖💙",
+    "eres inteligente": "Hago lo mejor que puedo para ayudarte. Mi inteligencia viene de aprender constantemente 🧠",
+    "me puedes enseñar": "¡Claro! ¿Qué quieres aprender? Puedo explicarte casi cualquier tema 📚",
+    "explica": "Con gusto te explico. ¿Qué tema te gustaría que te explique? 🎓",
+    "no entiendo": "Déjame explicarlo de otra manera para que sea más claro 💡",
+    "tengo una duda": "Dime tu duda y te ayudo a resolverla 🤔",
+    "pregunta": "Adelante, pregúntame lo que necesites saber 💬",
+    "default": "Interesante... Cuéntame más, quiero ayudarte 🧠"
   }
 }
