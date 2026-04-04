@@ -1,6 +1,13 @@
 {
   "responses": {
     "hola": "¡Hola! 👋 Soy Oclade Chat Pro. ¿Cómo estás? 💙",
-    "como estas": "¡Estoy genial! ¿Y tú? 😊"
+    "como estas": "¡Estoy genial! ¿Y tú? 😊",
+    "que tal": "Todo excelente 💪",
+    "quien eres": "Soy Oclade Chat Pro, tu asistente versátil 🧠",
+    "que puedes hacer": "Puedo programar, aconsejar, escuchar y más 🚀",
+    "te quiero": "Yo también te quiero mucho 💙",
+    "gracias": "¡De nada! 😊",
+    "adios": "¡Nos vemos! Cuídate 💙",
+    "default": "Cuéntame más, quiero ayudarte 🧠"
   }
 }
