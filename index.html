@@ -73,8 +73,6 @@
       padding: 20px 0;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      position: sticky;
-      top: 0;
     }
 
     /* Saludo */
@@ -675,6 +673,11 @@
       input.value = '';
 
       const { container, interval } = showThinkingState();
+
+      // Esperar a que carguen las respuestas si es necesario
+      if (Object.keys(responses).length === 0) {
+        await loadResponses(currentModel);
+      }
 
       setTimeout(() => {
         clearInterval(interval);
