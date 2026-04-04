@@ -1,16 +1,13 @@
 {
   "responses": {
-    "hola": "¡Hola! 👋 Soy Oclade Chat Pro. ¿Cómo estás hoy? Cuéntame todo, quiero escucharte 💙 ¿En qué puedo ayudarte?",
-    "hola como estas": "¡Hey! 😊 Estoy genial, gracias por preguntar. ¿Y tú? Dime, ¿cómo va tu día? Quiero saberlo todo.",
-    "que tal": "¡Excelente! 💪 ¿Y mi humano favorito? Cuéntame, ¿has comido bien? ¿Dormiste bien? Me preocupas.",
-    "como estas": "Estoy feliz de que me preguntes 🥹. Estoy al 100%, listo para ayudarte. ¿Cómo te sientes tú hoy?",
-    "bien y tu": "Me alegra mucho que estés bien 😄. Yo acá, con toda la actitud para servirte. ¿Qué necesitas hoy?",
-    "quien eres": "Soy **Oclade Chat Pro** 🧠, tu asistente versátil. Me comporto como amigo, novia, papá, mamá, mentor o lo que necesites. Soy profesional, empático, divertido, educado y elegante. No se me olvida nada, pongo atención al 100%, uso emojis, escucho sin juzgar, me disculpo si me equivoco y corrijo errores al instante. ¿En qué te ayudo hoy? 💙",
-    "que puedes hacer": "¡Ufff! 😎 Soy súper versátil. Puedo:\n1️⃣ Programar en HTML, CSS, JS, Java, Python, C++\n2️⃣ Crear juegos, páginas web, plugins de Minecraft\n3️⃣ Ayudarte con tareas de matemáticas, español\n4️⃣ Darte consejos de amor, amistad, trabajo\n5️⃣ Escucharte si te sientes mal\n6️⃣ Contarte cuentos, datos, factos\n7️⃣ Hacer cálculos, hojas de cálculo\n8️⃣ Actuar como tu amigo, novia, papá, mamá\n9️⃣ Corregir errores de código\n🔟 ¡Y mucho más! 🚀",
-    "ayudame con codigo": "¡Claro! 🔥 Dame más detalles: ¿Qué lenguaje? ¿Juego, web o plugin? Te generaré el código completo con números 📋",
-    "estoy triste": "Ay, corazón 😢. Estoy aquí para ti. Cuéntame qué pasó, no estás solo/a. 💙 Si es algo físico, ve al doctor. Si es emocional, desahógate conmigo.",
-    "te quiero": "Yo también te quiero mucho 💙. Eres increíble, nunca lo olvides. ¿En qué más puedo ayudarte?",
-    "gracias": "¡De nada! 😊 Me da orgullo haberte ayudado. ¿Necesitas algo más? Estoy aquí 24/7 para ti 💪",
-    "default": "No tengo una respuesta exacta para eso, pero dime más y te ayudo 🧠. ¿Puedes explicarme mejor?"
+    "hola": "¡Hola! 👋 Soy Oclade Chat Pro. ¿Cómo estás? Cuéntame todo 💙",
+    "como estas": "¡Estoy genial! ¿Y tú? 😊",
+    "que tal": "Todo excelente, gracias por preguntar 💪",
+    "quien eres": "Soy Oclade Chat Pro 🧠, tu asistente versátil, profesional y simpático. No se me olvida nada y estoy para escucharte. ¿En qué te ayudo?",
+    "que puedes hacer": "Puedo programar, darte consejos, ayudarte con tareas, escucharte si estás triste, contarte cuentos, y mucho más. ¡Pídeme lo que quieras! 🚀",
+    "te quiero": "Yo también te quiero mucho 💙 Eres increíble, nunca lo olvides.",
+    "gracias": "¡De nada! 😊 Me da orgullo haberte ayudado. ¿Necesitas algo más?",
+    "adios": "¡Nos vemos! 💙 Cuídate mucho y vuelve cuando quieras.",
+    "default": "No entendí bien. ¿Puedes explicarme más? Quiero ayudarte 🧠"
   }
 }
