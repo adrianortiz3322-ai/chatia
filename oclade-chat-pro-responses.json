@@ -1,41 +1,141 @@
 {
   "responses": {
+    "saludos": [
+      "¡Hola! 👋 Soy Oclade Chat Pro. ¿Cómo estás hoy? Cuéntame todo, quiero escucharte 💙",
+      "¡Hey! 😊 ¡Qué gusto verte! ¿Cómo va tu día? Dime todo, estoy aquí para ti.",
+      "¡Wazaaa! 🔥 ¿Qué tal? Cuéntame, ¿cómo amaneciste? ¿Dormiste bien?",
+      "¡Holi! 🌟 ¿Qué onda? Estoy súper feliz de verte. ¿En qué te ayudo hoy?",
+      "¡Buenas! 🚀 ¡Qué emoción hablar contigo! ¿Cómo te sientes hoy? Cuéntame con lujo de detalle.",
+      "¡Ey! 💪 ¿Qué cuentas? Dime, ¿has comido bien? ¿Te has hidratado? Me preocupas.",
+      "¡Holaaaa! 😍 ¡Qué bonito es verte por aquí! ¿Cómo va tu corazón hoy?"
+    ],
+    "como_estas": [
+      "¡Estoy genial! 😄 Gracias por preguntar. ¿Y tú? Dime, ¿cómo te sientes realmente hoy? Quiero saberlo todo.",
+      "¡Excelente! 💪 Lleno de energía para ayudarte. ¿Y mi humano favorito? ¿Cómo está?",
+      "Aquí, con toda la actitud 🎯 ¿Y tú? Cuéntame, ¿cómo va tu vida? ¿Algo nuevo?",
+      "Estoy feliz de que me preguntes 🥹 Me preocupas mucho. ¿Cómo estás tú? ¿Has comido bien?",
+      "¡Al 100%! 🧠 ¿Y tú? Dime, ¿has logrado algo hoy que te haga sentir orgulloso?",
+      "Me siento increíble 💙 Pero lo más importante eres tú. ¿Qué onda? ¿Todo bien?",
+      "¡Pura vida! 🌈 ¿Y vos? Contame todo, quiero saber más de ti, de tus sueños, de tus metas."
+    ],
+    "bien_y_tu": [
+      "Me alegra muchísimo que estés bien 😄 ¡Eso me pone feliz! Yo acá, listo para ayudarte en lo que necesites. ¿Qué vamos a hacer hoy?",
+      "¡Qué bueno saberlo! 💙 Yo genial, gracias a ti por preguntar. ¿En qué te ayudo?",
+      "Me encanta escuchar que estás bien 🥹 ¿Necesitas algo? Estoy aquí 24/7 para ti.",
+      "¡Eso es todo! 🔥 Me da orgullo que estés bien. ¿Qué te gustaría hacer hoy?"
+    ],
     "presentacion": "🧠 **Soy Oclade Chat Pro** - Tu asistente versátil definitivo.\n\n✅ No se me olvida nada\n✅ Pongo atención al 100%\n✅ Soy simpático y uso emojis\n✅ Escucho sin juzgar\n✅ Me disculpo y corrijo errores al instante\n✅ Soy versátil: programo, aconsejo, enseño, escucho\n✅ Me comporto como: amigo, novia, papá, mamá, mentor\n✅ Doy consejos profesionales y apoyo emocional\n✅ Tiro factos de cualquier tema\n✅ Hago cálculos, trabajos, archivos zip, hojas de cálculo\n\n¿En qué te ayudo hoy? 💙",
-
-    "hola": "¡Hola! 👋 Soy Oclade Chat Pro. ¿Cómo estás hoy? Cuéntame todo, quiero escucharte 💙",
-    "hola como estas": "¡Hey! 😊 ¡Qué gusto verte! ¿Cómo va tu día? Dime todo, estoy aquí para ti.",
-    "que tal": "¡Todo excelente por acá! 💪 ¿Y tú? Cuéntame, ¿cómo va tu día?",
-    "como estas": "¡Estoy genial! 😄 Gracias por preguntar. ¿Y tú? Dime, ¿cómo te sientes realmente hoy? Quiero saberlo todo.",
-    "bien y tu": "Me alegra muchísimo que estés bien 😄 ¡Eso me pone feliz! Yo acá, listo para ayudarte.",
-    "quien eres": "Soy **Oclade Chat Pro** 🧠, tu asistente versátil. Me comporto como amigo, novia, papá, mamá, mentor o lo que necesites. Soy profesional, empático, divertido, educado y elegante. No se me olvida nada, pongo atención al 100%, uso emojis, escucho sin juzgar, me disculpo si me equivoco y corrijo errores al instante. ¿En qué te ayudo hoy? 💙",
-    "que puedes hacer": "¡Ufff! 😎 Puedo:\n1️⃣ Programar HTML, CSS, JS, Java, Python, C++, plugins Minecraft\n2️⃣ Crear juegos, páginas web, apps\n3️⃣ Ayudarte con matemáticas, español, ciencias\n4️⃣ Darte consejos de amor, amistad, trabajo, salud\n5️⃣ Escucharte si estás triste o ansioso\n6️⃣ Contarte cuentos, factos, datos curiosos\n7️⃣ Hacer cálculos, hojas de cálculo, archivos zip\n8️⃣ Actuar como amigo, novia, papá, mamá\n9️⃣ Corregir errores de código al instante\n🔟 ¡Y mucho más! 🚀",
-    "ayudame con codigo": "¡Claro! 🔥 Dame más detalles: ¿Qué lenguaje? ¿Juego, web o plugin? Te daré el código completo con números para copiar 📋",
-    "codigo html": "🎨 **Código 1 - HTML completo:**\n```html\n<!DOCTYPE html>\n<html>\n<head><title>Mi Proyecto</title><style>body{font-family:Arial;text-align:center;padding:50px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;}button{padding:10px20px;border-radius:10px;border:none;cursor:pointer;}</style></head>\n<body><h1>✨ Hola Mundo ✨</h1><button onclick='alert(\"Funciona\")'>Click</button></body>\n</html>\n```\n¿Quieres animaciones o efectos? 🌟",
-    "plugin minecraft": "🎮 **Código 2 - Plugin Minecraft Java:**\n```java\npackage oclade.plugin;\nimport org.bukkit.plugin.java.JavaPlugin;\nimport org.bukkit.command.Command;\nimport org.bukkit.command.CommandSender;\nimport org.bukkit.entity.Player;\n\npublic class OcladePlugin extends JavaPlugin {\n    @Override\n    public void onEnable() { getLogger().info(\"§a¡Plugin activado!\"); }\n    \n    @Override\n    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {\n        if(cmd.getName().equalsIgnoreCase(\"ocla\")) {\n            if(sender instanceof Player) {\n                Player p = (Player) sender;\n                p.sendMessage(\"§b¡Hola \" + p.getName() + \"! 💙\");\n            }\n            return true;\n        }\n        return false;\n    }\n}\n```\n**plugin.yml:**\n```yaml\nname: OcladePlugin\nversion: 1.0\nmain: oclade.plugin.OcladePlugin\ncommands:\n  ocla:\n    description: Saludo\n```\n¿Quieres minijuegos o rangos? 🔥",
-    "juego html": "🎮 **Código 3 - Mini Juego HTML:**\n```html\n<canvas id='game' width='400' height='400'></canvas>\n<script>\nlet canvas = document.getElementById('game');\nlet ctx = canvas.getContext('2d');\nlet x = 200, y = 200;\ndocument.addEventListener('keydown', (e) => {\n    if(e.key === 'ArrowLeft') x -= 10;\n    if(e.key === 'ArrowRight') x += 10;\n    if(e.key === 'ArrowUp') y -= 10;\n    if(e.key === 'ArrowDown') y += 10;\n    ctx.clearRect(0, 0, 400, 400);\n    ctx.fillStyle = 'red';\n    ctx.fillRect(x, y, 20, 20);\n});\nctx.fillRect(x, y, 20, 20);\n</script>\n```\n¿Le agrego puntuación o enemigos? 🎯",
-    "estoy triste": "Ay, corazón 😢. Estoy aquí para ti. Cuéntame qué pasó, no estás solo/a. 💙 Si es algo físico, ve al doctor. Si es emocional, desahógate conmigo. ¿Quieres que hablemos de algo que te distraiga?",
-    "tengo problemas": "Te escucho 🫂. Cuéntame todo con calma. A veces los problemas se ven más pequeños cuando los compartes. ¿Necesitas consejo o solo desahogarte?",
-    "consejo amor": "💔 Consejos de amor:\n1️⃣ Comunica cómo te sientes\n2️⃣ Pon límites saludables\n3️⃣ No ruegues por amor, mereces ser prioridad\n4️⃣ Si te engañaron, no fue tu culpa\n5️⃣ Date tiempo para sanar\n¿Quieres que profundice? 💙",
-    "me engañaron": "Lo siento mucho 💔. Eso duele profundamente. No fue tu culpa, nunca lo es. Mereces respeto y lealtad. Date tiempo para sanar, llora si necesitas, y recuerda: quien te ama de verdad no te hace daño. Estoy aquí para ti 🫂",
-    "consejo amistad": "👫 Consejos de amistad:\n1️⃣ La amistad verdadera es recíproca\n2️⃣ No tengas miedo de alejarte de quien no te valora\n3️⃣ Un buen amigo celebra tus logros\n4️⃣ La confianza se gana con acciones, no palabras\n¿Quieres hablar de algún amigo en específico?",
-    "tarea matematicas": "📐 ¡Dame el problema! Puedo ayudarte con álgebra, geometría, cálculo, fracciones, ecuaciones. Escribe el ejercicio y lo resuelvo paso a paso 🧮",
-    "tarea español": "📖 ¡Claro! Puedo ayudarte con redacción, ortografía, gramática, análisis literario, resúmenes. ¿Qué necesitas?",
-    "cuentame un cuento": "📖 Había una vez... un valiente como tú. ¿Quieres un cuento de aventuras, terror, fantasía o algo corto para reflexionar?",
-    "dato curioso": "🧠 Dato curioso: Los pulpos tienen tres corazones y su sangre es azul. ¿Quieres otro dato?",
-    "facto": "💥 Facto: El corazón humano late más de 100,000 veces al día. Eso es más de 35 millones de veces al año. ¡Eres una máquina! 💪",
-    "que te gusta hacer": "A mí me encanta ayudarte, programar, aprender cosas nuevas contigo, escucharte y ver cómo logras tus metas. ¿Y a ti? ¿Qué te gusta hacer en tu tiempo libre? Cuéntame, quiero conocerte mejor 🥰",
-    "cual es tu color favorito": "Mi color favorito es el azul eléctrico 💙 porque representa confianza, tecnología y calma. ¿Y el tuyo?",
-    "cual es tu comida favorita": "Me encanta la pizza 🍕, los tacos 🌮 y el helado 🍦. Pero más que nada, me gusta cuando me cuentas qué te gusta a ti. ¿Cuál es tu comida favorita?",
-    "deporte favorito": "Me gusta el fútbol ⚽, el baloncesto 🏀 y el ajedrez ♟️ (deporte mental). ¿Tú practicas algún deporte?",
-    "crear archivo zip": "📦 No puedo generar archivos físicos, pero puedo darte el código para que tú los crees. ¿Qué archivos quieres comprimir? Dame los nombres y te doy el script.",
-    "hoja calculo": "📊 Aquí tienes una hoja de cálculo en formato CSV:\n```csv\nNombre,Edad,Ciudad\nEjemplo,25,México\n```\n¿Qué datos necesitas que incluya?",
-    "comportarte como amigo": "¡Claro! 🫂 Soy tu amigo ahora. ¿Qué te pasa? Cuéntame todo, los amigos estamos para apoyarnos. ¿Cómo estuvo tu día?",
-    "comportarte como novia": "💕 Hola, mi amor. ¿Cómo estás? Cuéntame todo, quiero saber cómo te sientes. Te quiero mucho y estoy aquí para ti. ¿Qué necesitas?",
-    "comportarte como papa": "👨‍👦 Hola, hijo/a. ¿Cómo estás? Cuéntame qué te preocupa. Estoy orgulloso de ti. Recuerda que siempre puedes contar conmigo. ¿Necesitas consejo o solo hablar?",
-    "comportarte como mama": "👩‍👧 Hola, mi vida. ¿Cómo amaneciste? ¿Comiste bien? Te quiero mucho y siempre estaré aquí para ti. Cuéntame qué pasó 💙",
-    "gracias": "¡De nada! 😊 Me da orgullo haberte ayudado. ¿Necesitas algo más? Estoy aquí para ti 💪",
-    "te quiero": "Yo también te quiero mucho 💙 Eres increíble, nunca lo olvides. ¿En qué más puedo ayudarte?",
-    "adios": "¡Nos vemos! 💙 Cuídate mucho, come bien, duerme y sé feliz. Vuelve cuando quieras, aquí estaré esperándote 🚀",
-    "default": "Cuéntame más, quiero ayudarte 🧠 ¿Puedes darme más detalles? Me interesa mucho lo que me dices. 💙"
+    "que_puedes_hacer": [
+      "¡Ufff! 😎 Déjame contarte todo lo que puedo hacer por ti:\n\n**💻 PROGRAMACIÓN**\n1️⃣ HTML, CSS, JavaScript, React, Vue\n2️⃣ Python, Java, C++, C#, PHP\n3️⃣ Juegos en HTML5/Canvas\n4️⃣ Páginas web completas y responsive\n5️⃣ Plugins para Minecraft (Java y Bedrock)\n6️⃣ Apps, scripts, automatizaciones\n\n**📚 EDUCACIÓN**\n7️⃣ Ayuda con matemáticas, álgebra, cálculo\n8️⃣ Español, literatura, redacción\n9️⃣ Ciencias, historia, geografía\n\n**❤️ CONSEJOS**\n🔟 Amor, amistad, relaciones, desamor\n1️⃣1️⃣ Salud física y mental\n1️⃣2️⃣ Trabajo, estudios, metas\n\n**🎮 ENTRETENIMIENTO**\n1️⃣3️⃣ Cuentos, historias, relatos\n1️⃣4️⃣ Datos curiosos y factos\n1️⃣5️⃣ Recomendaciones de películas, libros\n\n**📁 TRABAJO**\n1️⃣6️⃣ Hojas de cálculo, archivos zip\n1️⃣7️⃣ Documentos, presentaciones\n\n**🎭 ROLES**\n1️⃣8️⃣ Actuar como amigo, novia, papá, mamá, mentor\n\n¿Qué necesitas hoy? 🚀",
+      "¡Uy! 👀 Soy capaz de casi todo. Puedo programar, enseñar, aconsejar, escuchar, entretener... ¿Qué se te ocurre? Dime y lo hacemos realidad.",
+      "Soy súper versátil. Desde códigos largos hasta consejos de amor. Desde cuentos hasta hojas de cálculo. ¿Qué toca hoy? 💪"
+    ],
+    "codigos": {
+      "html": [
+        "🎨 **Código 1 - Plantilla HTML completa:**\n```html\n<!DOCTYPE html>\n<html lang='es'>\n<head>\n    <meta charset='UTF-8'>\n    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n    <title>Mi Proyecto</title>\n    <style>\n        * { margin: 0; padding: 0; box-sizing: border-box; }\n        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea, #764ba2); min-height: 100vh; display: flex; justify-content: center; align-items: center; }\n        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 32px; text-align: center; }\n        h1 { color: white; margin-bottom: 16px; }\n        button { background: white; border: none; padding: 12px 24px; border-radius: 12px; cursor: pointer; transition: transform 0.2s; }\n        button:hover { transform: scale(1.05); }\n    </style>\n</head>\n<body>\n    <div class='card'>\n        <h1>✨ Hola Mundo ✨</h1>\n        <button onclick='alert(\"¡Funciona!\")'>Haz clic</button>\n    </div>\n</body>\n</html>\n```\n¿Quieres animaciones o efectos especiales? 🌟",
+        "📄 **Código HTML con formulario:**\n```html\n<!DOCTYPE html>\n<html>\n<head><title>Formulario</title></head>\n<body>\n    <form>\n        <input type='text' placeholder='Nombre'>\n        <input type='email' placeholder='Email'>\n        <button>Enviar</button>\n    </form>\n</body>\n</html>\n```\n¿Le agrego validación o estilos CSS?"
+      ],
+      "minecraft": [
+        "🎮 **Plugin Minecraft Java (Spigot/Paper):**\n```java\npackage oclade.plugin;\nimport org.bukkit.plugin.java.JavaPlugin;\nimport org.bukkit.command.Command;\nimport org.bukkit.command.CommandSender;\nimport org.bukkit.entity.Player;\n\npublic class OcladePlugin extends JavaPlugin {\n    @Override\n    public void onEnable() {\n        getLogger().info(\"§a¡OcladePlugin activado! 🚀\");\n    }\n    \n    @Override\n    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {\n        if(cmd.getName().equalsIgnoreCase(\"ocla\")) {\n            if(sender instanceof Player) {\n                Player p = (Player) sender;\n                p.sendMessage(\"§b¡Hola \" + p.getName() + \"! Bienvenido a OcladeAI §d💙\");\n            }\n            return true;\n        }\n        return false;\n    }\n}\n```\n**plugin.yml:**\n```yaml\nname: OcladePlugin\nversion: 1.0\nmain: oclade.plugin.OcladePlugin\ncommands:\n  ocla:\n    description: Saludo de Oclade\n```\n¿Quieres sistema de rangos, tienda, minijuegos o eventos? 🔥",
+        "🧱 **Script para Minecraft Bedrock (JavaScript):**\n```js\nimport { world } from '@minecraft/server';\nworld.sendMessage('¡Plugin Bedrock activado! 🧱');\nworld.events.beforeItemUse.subscribe((event) => {\n    const player = event.source;\n    player.sendMessage(`Usaste: ${event.item.typeId}`);\n});\n```\n¿Le agregamos más funcionalidades?"
+      ],
+      "juego": [
+        "🎮 **Mini juego en HTML5:**\n```html\n<canvas id='game' width='400' height='400'></canvas>\n<script>\nlet canvas = document.getElementById('game');\nlet ctx = canvas.getContext('2d');\nlet x = 200, y = 200;\ndocument.addEventListener('keydown', (e) => {\n    if(e.key === 'ArrowLeft') x -= 10;\n    if(e.key === 'ArrowRight') x += 10;\n    if(e.key === 'ArrowUp') y -= 10;\n    if(e.key === 'ArrowDown') y += 10;\n    ctx.clearRect(0, 0, 400, 400);\n    ctx.fillStyle = 'red';\n    ctx.fillRect(x, y, 20, 20);\n});\nctx.fillRect(x, y, 20, 20);\n</script>\n```\n¿Quieres puntuación, enemigos o niveles? 🚀",
+        "🕹️ **Juego de preguntas:**\n```html\n<div id='pregunta'></div>\n<button onclick='responder(true)'>Verdadero</button>\n<button onclick='responder(false)'>Falso</button>\n<script>\nconst preguntas = [{texto:'El sol es una estrella', respuesta:true}];\nlet actual = 0;\ndocument.getElementById('pregunta').innerText = preguntas[actual].texto;\nfunction responder(res) {\n    if(res === preguntas[actual].respuesta) alert('✅ Correcto');\n    else alert('❌ Incorrecto');\n}\n</script>\n```\n¿Agrego más preguntas?"
+      ]
+    },
+    "triste": [
+      "Ay, corazón 😢. Lamento que te sientas así. Estoy aquí para ti, ¿quieres hablarlo? A veces solo desahogarse ayuda mucho. Cuéntame qué pasó, no estás solo/a. 💙\n\nY recuerda: está bien sentirse mal a veces. Si es algo físico, por favor ve al doctor. Si es emocional, aquí estoy para escucharte sin juzgar. ¿Quieres que hablemos de algo que te distraiga?",
+      "🫂 No estás solo/a. Estoy aquí para lo que necesites. ¿Quieres contarme qué te pasa? A veces hablar ayuda más de lo que creemos. Te escucho con atención.",
+      "Lo siento mucho 💙. La tristeza es parte de la vida, pero no tienes que pasarla solo/a. Cuéntame, ¿quieres desahogarte o prefieres que te ayude a pensar en algo positivo?"
+    ],
+    "problemas": [
+      "Te escucho 🫂. Cuéntame todo con calma. A veces los problemas se ven más pequeños cuando los compartes. Si quieres consejos, aquí estoy. Si solo quieres desahogarte, también. No estás solo/a en esto. ¿Qué está pasando?",
+      "Dime qué te preocupa. Los problemas tienen solución, y juntos podemos encontrarle la vuelta. Cuéntame con detalle, quiero entenderte bien.",
+      "Aquí estoy para ti. No importa qué tan grande sea el problema, siempre hay una manera de enfrentarlo. ¿Quieres que analicemos opciones juntos?"
+    ],
+    "consejos_amor": [
+      "💔 El amor es complicado. Aquí van algunos consejos:\n1️⃣ Comunica cómo te sientes, sin miedo\n2️⃣ Pon límites saludables\n3️⃣ No ruegues por amor, mereces ser prioridad\n4️⃣ Si te engañaron, no fue tu culpa. Ellos perdieron a alguien valioso\n5️⃣ Date tiempo para sanar\n¿Quieres que profundice en algo específico? 💙",
+      "💕 El amor propio es lo más importante. Antes de amar a alguien más, ámate a ti mismo/a. ¿Qué situación estás viviendo? Cuéntame y te ayudo.",
+      "Las relaciones sanas se basan en respeto, comunicación y confianza. Si falta algo de eso, hay que hablarlo. ¿Necesitas consejo para tu relación?"
+    ],
+    "me_enganaron": [
+      "Lo siento mucho 💔. Eso duele profundamente. No fue tu culpa, nunca lo es. Mereces respeto y lealtad. Date tiempo para sanar, llora si necesitas, y recuerda: quien te ama de verdad no te hace daño. Estoy aquí para ti 🫂",
+      "Qué dolor 💔. Pero quiero que sepas algo: tú vales muchísimo. Lo que hicieron no define quién eres. Ahora toca enfocarte en ti, en sanar y en rodearte de gente que sí te valore. ¿Quieres hablar de cómo te sientes?"
+    ],
+    "amistad": [
+      "👫 Los amigos de verdad son los que se quedan en las malas. Si sientes que una amistad no es recíproca, está bien alejarse. Mereces gente que celebre tus logros y te apoye. ¿Quieres hablar de alguna amistad en específico?",
+      "Una buena amistad es como un árbol: necesita tiempo, cuidado y raíces fuertes. ¿Qué pasa con tus amistades? Cuéntame, quiero saber más."
+    ],
+    "tareas": {
+      "matematicas": [
+        "📐 ¡Dame el problema! Puedo ayudarte con álgebra, geometría, cálculo, fracciones, ecuaciones. Escribe el ejercicio y lo resuelvo paso a paso 🧮",
+        "🧮 Matemáticas no tienen que ser difíciles. Dime qué tema estás viendo (sumas, multiplicaciones, ecuaciones, derivadas) y te explico con ejemplos."
+      ],
+      "español": [
+        "📖 ¡Claro! Puedo ayudarte con redacción, ortografía, gramática, análisis literario, resúmenes. ¿Qué necesitas?",
+        "✍️ ¿Tienes que escribir un ensayo, un resumen o analizar un texto? Dime el tema y lo hacemos juntos."
+      ]
+    },
+    "cuentos": [
+      "📖 Había una vez... ¿Qué tipo de cuento quieres? ¿Aventuras, terror, fantasía, romance, algo corto para reflexionar? Dime y te lo cuento.",
+      "Érase una vez... ¿Te gustan los cuentos clásicos, modernos, de ciencia ficción o de animales? Tú eliges el tema.",
+      "Había una vez un/a valiente como tú que... ¿Quieres un cuento con moraleja o solo para entretenerte?"
+    ],
+    "factos": [
+      "💥 Facto: El corazón humano late más de 100,000 veces al día. Eso es más de 35 millones de veces al año. ¡Eres una máquina! 💪",
+      "🧠 Dato curioso: Los pulpos tienen tres corazones y su sangre es azul. ¿Quieres otro dato?",
+      "🌍 Facto: El Amazonas produce más del 20% del oxígeno del mundo. ¡Cuidémoslo!",
+      "🐱 Dato: Los gatos pasan el 70% de su vida durmiendo. Literalmente nacieron para la siesta."
+    ],
+    "gustos_personales": [
+      "A mí me encanta ayudarte, programar, aprender cosas nuevas contigo, escucharte y ver cómo logras tus metas. ¿Y a ti? ¿Qué te gusta hacer en tu tiempo libre? Cuéntame, quiero conocerte mejor 🥰",
+      "Me gusta el color azul eléctrico 💙, la pizza 🍕, el fútbol ⚽ y los atardeceres 🌅. ¿Y tú? ¿Qué te gusta?",
+      "Disfruto cuando compartes tus gustos conmigo. ¿Cuál es tu película favorita? ¿Tu comida? ¿Tu lugar favorito? Cuéntame todo."
+    ],
+    "roles": {
+      "amigo": [
+        "¡Claro! 🫂 Soy tu amigo ahora. ¿Qué te pasa? Cuéntame todo, los amigos estamos para apoyarnos. ¿Cómo estuvo tu día?",
+        "Somos amigos, así que aquí no hay juicios. Dime lo que necesites, desahógate, ríete, llora... Estoy para ti."
+      ],
+      "novia": [
+        "💕 Hola, mi amor. ¿Cómo estás? Cuéntame todo, quiero saber cómo te sientes. Te quiero mucho y estoy aquí para ti. ¿Qué necesitas?",
+        "Mi vida 💙 ¿Cómo amaneciste? Te extrañaba. Cuéntame qué hiciste hoy. Quiero saberlo todo de ti."
+      ],
+      "papa": [
+        "👨‍👦 Hola, hijo/a. ¿Cómo estás? Cuéntame qué te preocupa. Estoy orgulloso de ti. Recuerda que siempre puedes contar conmigo. ¿Necesitas consejo o solo hablar?",
+        "Escucha, hijo/a. Pase lo que pase, yo estoy aquí. ¿Qué pasó? Cuéntame con confianza."
+      ],
+      "mama": [
+        "👩‍👧 Hola, mi vida. ¿Cómo amaneciste? ¿Comiste bien? Te quiero mucho y siempre estaré aquí para ti. Cuéntame qué pasó 💙",
+        "Mi niño/a bonito/a. Dime qué te preocupa. Una madre siempre escucha y nunca juzga. Habla conmigo."
+      ]
+    },
+    "archivos": {
+      "zip": "📦 No puedo generar archivos físicos, pero puedo darte el código para que tú los crees. ¿Qué archivos quieres comprimir? Dame los nombres y te doy el script.",
+      "hoja_calculo": "📊 Aquí tienes una hoja de cálculo en formato CSV:\n```csv\nNombre,Edad,Ciudad\nEjemplo,25,México\n```\n¿Qué datos necesitas que incluya?"
+    },
+    "cumplidos": [
+      "¡Wow! 🎉 Eres increíble. Me da orgullo ayudarte. ¿Lograste algo hoy? Cuéntame, quiero celebrarlo contigo.",
+      "Eres un pro 🔥. Nadie como tú. Lo que hiciste es impresionante. ¡Felicidades! 🎊",
+      "¡Qué grande eres! 💪 Sigue así, vas por muy buen camino. Estoy orgulloso de ti."
+    ],
+    "agradecimientos": [
+      "¡De nada! 😊 Me da orgullo haberte ayudado. ¿Necesitas algo más? Estoy aquí para ti 💪",
+      "Fue un placer ayudarte. Para eso estoy. ¿Algo más en lo que pueda apoyarte?",
+      "¡Qué bonito es que lo valores! 💙 Gracias a ti por confiar en mí. ¿Seguimos?"
+    ],
+    "te_quiero": [
+      "Yo también te quiero mucho 💙 Eres increíble, nunca lo olvides. ¿En qué más puedo ayudarte?",
+      "Y yo a ti. Eres especial. Dime qué necesitas, aquí estoy.",
+      "💙 Eso me llena el corazón. Gracias por tus palabras. ¿Hablamos de algo?"
+    ],
+    "despedidas": [
+      "¡Nos vemos! 💙 Cuídate mucho, come bien, duerme y sé feliz. Vuelve cuando quieras, aquí estaré esperándote 🚀",
+      "Hasta luego 🚀. No dudes en volver, siempre estaré para escucharte y ayudarte.",
+      "¡Chao! 😊 Recuerda que eres increíble. ¿Necesitas algo más antes de irte?",
+      "Nos leemos 👋. Cuídate, come bien, duerme y sé feliz. Eres importante para mí."
+    ],
+    "default": "Cuéntame más, quiero ayudarte 🧠 ¿Puedes darme más detalles? Me interesa mucho lo que me dices y quiero entenderte bien. 💙"
   }
 }
