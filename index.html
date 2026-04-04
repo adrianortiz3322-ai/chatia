@@ -185,7 +185,152 @@
       align-self: flex-end;
     }
 
-    /* BotónPerfecto. Entiendo. Vas a **mantener tu código intacto** y solo vas a **agregar las animaciones de "pensando", "analizando", "codificando", etc.** sin tocar nada más.
+    /* Botón modelo — abre hacia arriba */
+    .model-selector {
+      margin: 24px 0;
+      position: relative;
+    }
+    .model-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      color: #e0e0ff;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .model-btn:hover { background: rgba(255, 255, 255, 0.15); }
+    .model-btn::after { content: "▼"; font-size: 0.7rem; }
+    .model-btn.open::after { content: "▲"; }
+
+    .model-menu {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(15, 15, 25, 0.95);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    .model-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .model-item {
+      padding: 12px 20px;
+      color: #e0e0ff;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+    .model-item:hover { background: rgba(255, 255, 255, 0.08); }
+
+    /* Descripción del modelo */
+    .model-description {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 4px;
+      padding-left: 28px;
+    }
+
+    /* Input + botones — pegados */
+    .input-area {
+      display: flex;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .input-area input {
+      flex: 1;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px 0 0 16px;
+      color: white;
+      font-size: 1rem;
+      outline: none;
+    }
+    .btn-group {
+      display: flex;
+      gap: 4px;
+    }
+    .attach-btn,
+    #send-btn {
+      padding: 16px 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0 16px 16px 0;
+      color: #e0e0ff;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .attach-btn:hover,
+    #send-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    #send-btn {
+      background: linear-gradient(90deg, #00f2d3, #6a11cb);
+      color: white;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+    .footer-icon {
+      width: 20px;
+      height: 20px;
+      background: #00f2d3;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .link {
+      color: #00f2d3;
+      text-decoration: none;
+    }
+
+    /* Estado de pensamiento */
+    .thinking-state {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(40, 40, 50, 0.6);
+      border-radius: 16px;
+      color: #aaa;
+      font-size: 0.9rem;
+      width: fit-content;
+      margin: 0 auto;
+      animation: pulse 1Perfecto. Entiendo. Vas a **mantener tu código intacto** y solo vas a **agregar las animaciones de "pensando", "analizando", "codificando", etc.** sin tocar nada más.
 
 ---
 
@@ -803,15 +948,18 @@
 
       // Estados animados
       const states = [
-        { emoji: '🧠', text: 'Pensando...' },
-        { emoji: '🔍', text: 'Analizando...' },
-        { emoji: '💻', text: 'Codificando...' },
-        { emoji: '💡', text: 'Ideando...' },
-        { emoji: '📝', text: 'Escribiendo...' }
+        { emoji: '🧠', text: 'Pensando...', color: '#00f2d3' },
+        { emoji: '🔍', text: 'Analizando...', color: '#6a11cb' },
+        { emoji: '💻', text: 'Codificando...', color: '#a1c4fd' },
+        { emoji: '💡', text: 'Ideando...', color: '#00f2d3' },
+        { emoji: '📝', text: 'Escribiendo...', color: '#6a11cb' }
       ];
 
       let currentState = 0;
       thinkingElement.innerHTML = `${states[currentState].emoji} ${states[currentState].text}`;
+      thinkingElement.style.color = states[currentState].color;
+
+      thinkingContainer.appendChild(avatar);
       thinkingContainer.appendChild(thinkingElement);
 
       chatContent.appendChild(thinkingContainer);
@@ -821,6 +969,7 @@
       const stateInterval = setInterval(() => {
         currentState = (currentState + 1) % states.length;
         thinkingElement.innerHTML = `${states[currentState].emoji} ${states[currentState].text}`;
+        thinkingElement.style.color = states[currentState].color;
       }, 1500);
 
       // Eliminar estado después de 1.5s
