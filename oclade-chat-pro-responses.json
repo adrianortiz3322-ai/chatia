@@ -1,0 +1,10 @@
+{
+  "greeting": "Hola, soy Oclade Chat Pro. Puedo ayudarte con cualquier tema.",
+  "responses": {
+    "hola": "¡Hola! ¿En qué puedo ayudarte hoy?",
+    "como hacer una torta": "Necesitas harina, huevos, azúcar, mantequilla, levadura y leche. Mezcla y hornea a 180°C por 30 minutos.",
+    "como aprender ingles": "Practica todos los días, escucha podcasts, lee libros y habla con nativos. Usa apps como Duolingo o Babbel.",
+    "como armar una pc": "Necesitas CPU, placa madre, RAM, disco duro, fuente de poder, GPU y gabinete. Conecta todo siguiendo el manual."
+  }
+}
+
