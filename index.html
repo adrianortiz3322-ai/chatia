@@ -437,6 +437,7 @@
     // === DATOS LOCALES DE CADA MODELO ===
     let currentModel = 'chat';
     let responses = {};
+    let conversationHistory = []; // ← Nueva memoria conversacional
 
     async function loadResponses(model) {
       try {
@@ -566,6 +567,9 @@
 
       chatContent.appendChild(msgContainer);
       chatContent.scrollTop = chatContent.scrollHeight;
+
+      // Guardar mensaje en historial
+      conversationHistory.push({ role: isUser ? 'user' : 'assistant', content: text });
     }
 
     // Enviar
@@ -584,7 +588,24 @@
       input.value = '';
 
       // Buscar respuesta
-      const response = responses[text] || "No tengo una respuesta para eso.";
+      let response = responses[text];
+
+      if (!response) {
+        // Si no encuentra respuesta exacta, buscar coincidencia parcial
+        const keys = Object.keys(responses);
+        for (const key of keys) {
+          if (text.includes(key)) {
+            response = responses[key];
+            break;
+          }
+        }
+      }
+
+      if (!response) {
+        // Si no encuentra nada, usar respuesta por defecto
+        response = "No tengo una respuesta para eso. ¿Puedes reformularlo?";
+      }
+
       setTimeout(() => {
         addMessage(response, false);
       }, 1500);
