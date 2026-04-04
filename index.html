@@ -423,6 +423,24 @@
       if (i >= fullText.length) clearInterval(typewriter);
     }, 80);
 
+    // === DATOS LOCALES DE CADA MODELO ===
+    let currentModel = 'chat';
+    let responses = {};
+
+    async function loadResponses(model) {
+      try {
+        const response = await fetch(`oclade-${model}-responses.json`);
+        const data = await response.json();
+        responses = data.responses;
+      } catch (error) {
+        console.error("Error al cargar respuestas:", error);
+        responses = {};
+      }
+    }
+
+    // Cargar respuestas del modelo inicial
+    loadResponses(currentModel);
+
     // Menú modelo
     const modelBtn = document.getElementById('model-btn');
     const modelMenu = document.getElementById('model-menu');
@@ -440,6 +458,10 @@
         modelBtn.innerHTML = `${item.innerHTML} <span style="opacity:0.7;font-size:0.7em;">✓</span>`;
         modelBtn.classList.remove('open');
         modelMenu.classList.remove('open');
+
+        // Cambiar modelo
+        currentModel = item.getAttribute('data-model');
+        loadResponses(currentModel);
       });
     });
 
@@ -517,7 +539,7 @@
     // Enviar
     document.getElementById('send-btn').addEventListener('click', () => {
       const input = document.getElementById('user-input');
-      const text = input.value.trim();
+      const text = input.value.trim().toLowerCase();
       if (!text) return;
 
       if (document.querySelector('.greeting')) {
@@ -529,8 +551,10 @@
       addMessage(text, true);
       input.value = '';
 
+      // Buscar respuesta
+      const response = responses[text] || "No tengo una respuesta para eso.";
       setTimeout(() => {
-        addMessage(`Gracias por tu mensaje: "${text}". ¿En qué más puedo ayudarte?`, false);
+        addMessage(response, false);
       }, 1500);
     });
 
@@ -541,3 +565,4 @@
   </script>
 </body>
 </html>
+
