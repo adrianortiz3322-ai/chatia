@@ -392,8 +392,10 @@
         <div class="model-description">IA especializada en programación, desarrollo y solución de bugs.</div>
         <div class="model-item" data-model="think">🧠 Oclade Think</div>
         <div class="model-description">IA avanzada para análisis profundo, lógica y resolución de problemas.</div>
-        <div class="model-item" data-model="chat">💬 Oclade Chat Pro</div>
+        <div class="model-item" data-model="chat-pro">💬 Oclade Chat Pro</div>
         <div class="model-description">IA versátil para todo tipo de conversaciones y tareas.</div>
+        <div class="model-item" data-model="memory">🧩 Oclade Memory</div>
+        <div class="model-description">IA con memoria persistente para recordar conversaciones anteriores.</div>
       </div>
     </div>
 
@@ -473,7 +475,7 @@
     }, 80);
 
     // === DATOS LOCALES DE CADA MODELO ===
-    let currentModel = 'chat';
+    let currentModel = 'chat-pro';
     let responses = {};
     let conversationHistory = [];
 
@@ -484,7 +486,7 @@
         responses = data.responses;
         console.log("✅ Respuestas cargadas:", Object.keys(responses).length);
       } catch (error) {
-        console.error("Error al cargar respuestas:", error);
+        console.error("❌ Error al cargar respuestas:", error);
         responses = {};
       }
     }
@@ -539,8 +541,10 @@
           greeting = 'Hola, soy Oclade Code. Estoy especializado en programación. ¿Qué código necesitas? 💻';
         } else if (currentModel === 'think') {
           greeting = 'Hola, soy Oclade Think. Estoy aquí para análisis profundo. ¿Qué quieres analizar? 🧠';
-        } else if (currentModel === 'chat') {
+        } else if (currentModel === 'chat-pro') {
           greeting = 'Hola, soy Oclade Chat Pro. Estoy listo para cualquier tema. ¿Cómo estás? 💙';
+        } else if (currentModel === 'memory') {
+          greeting = 'Hola, soy Oclade Memory. Puedo recordar nuestras conversaciones anteriores. ¿Qué necesitas? 🧩';
         }
         addMessage(greeting, false);
       });
