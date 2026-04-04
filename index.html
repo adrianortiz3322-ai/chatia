@@ -532,7 +532,7 @@
       `;
     }
 
-    // Agregar mensaje
+    // Agregar mensaje con animación de escritura lenta
     function addMessage(text, isUser) {
       const chatContent = document.getElementById('chat-content');
       const msgContainer = document.createElement('div');
@@ -541,16 +541,26 @@
       const message = document.createElement('div');
       message.className = 'message';
       if (isUser) message.classList.add('user-message');
-      message.textContent = text;
+      message.textContent = '';
 
       if (isUser) {
         msgContainer.style.flexDirection = 'row-reverse';
         msgContainer.style.justifyContent = 'flex-end';
+        message.textContent = text;
         msgContainer.appendChild(message);
       } else {
         const avatar = document.createElement('div');
         avatar.innerHTML = createAvatar();
         msgContainer.appendChild(avatar);
+
+        // Animación de escritura lenta
+        let i = 0;
+        const timer = setInterval(() => {
+          message.textContent += text.charAt(i);
+          i++;
+          if (i > text.length) clearInterval(timer);
+        }, 50); // 50ms por letra
+
         msgContainer.appendChild(message);
       }
 
