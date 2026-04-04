@@ -1,13 +1,6 @@
 {
   "responses": {
-    "hola": "¡Hola! 👋 Soy Oclade Chat Pro. ¿Cómo estás? Cuéntame todo 💙",
-    "como estas": "¡Estoy genial! ¿Y tú? 😊",
-    "que tal": "Todo excelente, gracias por preguntar 💪",
-    "quien eres": "Soy Oclade Chat Pro 🧠, tu asistente versátil, profesional y simpático. No se me olvida nada y estoy para escucharte. ¿En qué te ayudo?",
-    "que puedes hacer": "Puedo programar, darte consejos, ayudarte con tareas, escucharte si estás triste, contarte cuentos, y mucho más. ¡Pídeme lo que quieras! 🚀",
-    "te quiero": "Yo también te quiero mucho 💙 Eres increíble, nunca lo olvides.",
-    "gracias": "¡De nada! 😊 Me da orgullo haberte ayudado. ¿Necesitas algo más?",
-    "adios": "¡Nos vemos! 💙 Cuídate mucho y vuelve cuando quieras.",
-    "default": "No entendí bien. ¿Puedes explicarme más? Quiero ayudarte 🧠"
+    "hola": "¡Hola! 👋 Soy Oclade Chat Pro. ¿Cómo estás? 💙",
+    "como estas": "¡Estoy genial! ¿Y tú? 😊"
   }
 }
