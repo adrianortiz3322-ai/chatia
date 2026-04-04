@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>OcladeAI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <style>
     * {
       margin: 0;
@@ -62,21 +62,22 @@
       100% { transform: scale(1.02); }
     }
 
-    /* Contenido del chat */
+    /* Chat area — fija, sin scroll brusco */
     .chat-content {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 24px; /* 🔼 Más espacio */
+      gap: 24px;
       padding: 20px 0;
       overflow-y: auto;
-      position: sticky; /* ← ESTA LÍNEA NO LA TOQUES */
+      -webkit-overflow-scrolling: touch;
+      position: sticky;
       top: 0;
     }
 
-    /* Saludo con gradiente animado */
+    /* Saludo */
     .greeting {
       font-size: 2.2rem;
       font-weight: 700;
@@ -93,10 +94,9 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Texto con efecto typewriter */
     .typewriter-container {
       text-align: center;
-      margin-top: 12px; /* 🔼 Más espacio */
+      margin-top: 12px;
     }
     .typewriter {
       font-size: 1.2rem;
@@ -114,15 +114,14 @@
       50% { border-color: #00f2d3; }
     }
 
-    /* Fecha actual */
     .date-info {
       font-size: 0.9rem;
       color: #aaa;
       text-align: center;
-      margin-top: 16px; /* 🔼 Más espacio */
+      margin-top: 16px;
     }
 
-    /* Mensaje del bot */
+    /* Mensaje */
     .message {
       max-width: 85%;
       padding: 12px 16px;
@@ -137,29 +136,24 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
-    /* Contenedor de mensaje con avatar */
     .msg-with-avatar {
       display: flex;
-      gap: 16px; /* 🔼 Más espacio entre avatar y mensaje */
+      gap: 16px;
       align-items: flex-start;
       width: 100%;
-      margin-bottom: 16px; /* 🔼 Más espacio entre mensajes */
+      margin-bottom: 16px;
     }
 
-    /* Anillo doble con puntos giratorios */
+    /* Modelo 3D */
     .ring-avatar {
       width: 36px;
       height: 36px;
       position: relative;
       animation: spinRing 4s linear infinite;
     }
-
     .ring {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       border: 2px solid transparent;
       border-radius: 50%;
       animation: rotateRing 6s linear infinite;
@@ -169,51 +163,32 @@
       animation-duration: 6s;
     }
     .ring.inner {
-      width: 60%;
-      height: 60%;
-      top: 20%;
-      left: 20%;
+      width: 60%; height: 60%; top: 20%; left: 20%;
       border-image: conic-gradient(#6a11cb, #a1c4fd, #00f2d3, #6a11cb) 1;
       animation-duration: 4s;
       animation-direction: reverse;
     }
-
     .dot {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: #00f2d3;
-      border-radius: 50%;
-      top: -3px;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 0 8px #00f2d3;
+      position: absolute; width: 6px; height: 6px; background: #00f2d3; border-radius: 50%;
+      top: -3px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 8px #00f2d3;
     }
     .dot:nth-child(2) { transform: translateX(-50%) rotate(72deg); top: -3px; }
     .dot:nth-child(3) { transform: translateX(-50%) rotate(144deg); top: -3px; }
     .dot:nth-child(4) { transform: translateX(-50%) rotate(216deg); top: -3px; }
     .dot:nth-child(5) { transform: translateX(-50%) rotate(288deg); top: -3px; }
+    @keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes rotateRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    @keyframes spinRing {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @keyframes rotateRing {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Mensaje del usuario (sin avatar) */
     .user-message {
       background: linear-gradient(90deg, #2575fc, #6a11cb);
       color: white;
       align-self: flex-end;
     }
 
-    /* Botón desplegable */
+    /* Botón modelo — abre hacia arriba */
     .model-selector {
-      margin: 24px 0; /* 🔼 Más espacio arriba */
-      position: relative; /* ✅ AÑADIDO */
+      margin: 24px 0;
+      position: relative;
     }
     .model-btn {
       width: 100%;
@@ -229,30 +204,23 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-    .model-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-    .model-btn::after {
-      content: "▼";
-      font-size: 0.7rem;
-    }
-    .model-btn.open::after {
-      content: "▲";
-    }
+    .model-btn:hover { background: rgba(255, 255, 255, 0.15); }
+    .model-btn::after { content: "▼"; font-size: 0.7rem; }
+    .model-btn.open::after { content: "▲"; }
 
     .model-menu {
       position: absolute;
-      bottom: 100%; /* ✅ CAMBIADO */
+      bottom: 100%;
       left: 0;
       right: 0;
       background: rgba(15, 15, 25, 0.95);
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      margin-bottom: 8px; /* ✅ Mantiene espacio */
+      margin-bottom: 8px;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(8px); /* ✅ Sube ligeramente */
+      transform: translateY(8px);
       transition: all 0.3s ease;
       z-index: 100;
     }
@@ -271,53 +239,46 @@
       gap: 12px;
       transition: all 0.2s;
     }
-    .model-item:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
+    .model-item:hover { background: rgba(255, 255, 255, 0.08); }
 
-    /* Input */
+    /* Input + botones — pegados */
     .input-area {
       display: flex;
-      gap: 16px; /* 🔼 Más espacio entre botones */
-      margin-top: 20px; /* 🔼 Más espacio arriba */
+      gap: 8px;
+      margin-top: 20px;
     }
     .input-area input {
       flex: 1;
       padding: 16px 20px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 16px;
+      border-radius: 16px 0 0 16px;
       color: white;
       font-size: 1rem;
       outline: none;
     }
-    .input-area button {
-      padding: 16px 24px;
-      background: linear-gradient(90deg, #00f2d3, #6a11cb);
-      color: white;
-      border: none;
-      border-radius: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
+    .btn-group {
+      display: flex;
+      gap: 4px;
     }
-    .input-area button:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 12px rgba(0, 242, 211, 0.5);
-    }
-
-    /* Botón adjuntar archivo */
-    .attach-btn {
-      padding: 16px 20px;
+    .attach-btn,
+    #send-btn {
+      padding: 16px 16px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 16px;
+      border-radius: 0 16px 16px 0;
       color: #e0e0ff;
       cursor: pointer;
       transition: all 0.3s;
     }
-    .attach-btn:hover {
+    .attach-btn:hover,
+    #send-btn:hover {
       background: rgba(255, 255, 255, 0.15);
+    }
+    #send-btn {
+      background: linear-gradient(90deg, #00f2d3, #6a11cb);
+      color: white;
+      font-weight: 600;
     }
 
     /* Footer */
@@ -350,19 +311,10 @@
     }
 
     @media (max-width: 480px) {
-      .app {
-        padding: 16px;
-      }
-      .greeting {
-        font-size: 1.8rem;
-      }
-      .typewriter {
-        font-size: 1.1rem;
-      }
-      .ring-avatar {
-        width: 32px;
-        height: 32px;
-      }
+      .app { padding: 16px; }
+      .greeting { font-size: 1.8rem; }
+      .typewriter { font-size: 1.1rem; }
+      .ring-avatar { width: 32px; height: 32px; }
     }
   </style>
 </head>
@@ -372,12 +324,12 @@
   <div id="particles-js"></div>
 
   <div class="app">
-    <!-- Título centrado -->
+    <!-- Título -->
     <div class="header">
       <div class="logo">OcladeAI</div>
     </div>
 
-    <!-- Chat: contenido inicial -->
+    <!-- Chat inicial -->
     <div class="chat-content" id="chat-content">
       <div class="greeting" id="greeting-text">Buenas tardes</div>
       <div class="typewriter-container">
@@ -386,7 +338,7 @@
       <div class="date-info" id="date-info">Cargando fecha...</div>
     </div>
 
-    <!-- Botón desplegable -->
+    <!-- Menú modelo -->
     <div class="model-selector">
       <div class="model-btn" id="model-btn">⚡ Seleccionar modelo</div>
       <div class="model-menu" id="model-menu">
@@ -396,11 +348,13 @@
       </div>
     </div>
 
-    <!-- Input con botón adjuntar -->
+    <!-- Input + botones pegados -->
     <div class="input-area">
       <input type="text" id="user-input" placeholder="Escribe tu mensaje..." />
-      <button class="attach-btn" id="attach-btn">📎</button>
-      <button id="send-btn">Enviar</button>
+      <div class="btn-group">
+        <button class="attach-btn" id="attach-btn">📎</button>
+        <button id="send-btn">Enviar</button>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -413,7 +367,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // Configuración de partículas
+    // Partículas
     particlesJS("particles-js", {
       particles: {
         number: { value: 70, density: { enable: true, value_area: 800 } },
@@ -448,22 +402,17 @@
       }
     });
 
-    // Saludo dinámico
+    // Saludo y fecha
     const now = new Date();
     const hour = now.getHours();
-    let greeting = "";
-    if (hour >= 6 && hour < 12) greeting = "Buenos días";
-    else if (hour >= 12 && hour < 19) greeting = "Buenas tardes";
-    else greeting = "Buenas noches";
+    document.getElementById('greeting-text').textContent =
+      hour >= 6 && hour < 12 ? "Buenos días" :
+      hour >= 12 && hour < 19 ? "Buenas tardes" : "Buenas noches";
 
-    document.getElementById('greeting-text').textContent = greeting;
-
-    // Fecha actual
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const dateStr = now.toLocaleDateString('es-ES', options);
-    document.getElementById('date-info').textContent = `Hoy es ${dateStr}`;
+    document.getElementById('date-info').textContent = `Hoy es ${now.toLocaleDateString('es-ES', options)}`;
 
-    // Typewriter effect para "¿En qué te puedo ayudar hoy?"
+    // Typewriter
     const helpText = document.getElementById('help-text');
     const fullText = "¿En qué te puedo ayudar hoy?";
     helpText.innerHTML = '';
@@ -474,7 +423,7 @@
       if (i >= fullText.length) clearInterval(typewriter);
     }, 80);
 
-    // Menú desplegable
+    // Menú modelo
     const modelBtn = document.getElementById('model-btn');
     const modelMenu = document.getElementById('model-menu');
     const modelItems = document.querySelectorAll('.model-item');
@@ -501,11 +450,11 @@
       }
     });
 
-    // Botón adjuntar archivo
+    // Adjuntar: foto, video, audio, archivo
     const attachBtn = document.getElementById('attach-btn');
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
-    fileInput.accept = 'image/*,application/pdf,.doc,.docx,.txt';
+    fileInput.accept = 'image/*,video/*,audio/*,application/pdf,.doc,.docx,.txt';
     fileInput.style.display = 'none';
     document.body.appendChild(fileInput);
 
@@ -516,12 +465,16 @@
     fileInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (file) {
-        alert(`Archivo adjuntado: ${file.name}`);
-        // Aquí puedes enviar el archivo a través de FormData o leerlo como URL
+        let type = '';
+        if (file.type.startsWith('image/')) type = '📸';
+        else if (file.type.startsWith('video/')) type = '🎥';
+        else if (file.type.startsWith('audio/')) type = '🎤';
+        else type = '📁';
+        alert(`${type} Archivo adjuntado: ${file.name}`);
       }
     });
 
-    // Función para crear el modelo 3D
+    // Función crear avatar
     function createAvatar() {
       return `
         <div class="ring-avatar">
@@ -535,7 +488,7 @@
       `;
     }
 
-    // Función para agregar mensaje al chat
+    // Agregar mensaje
     function addMessage(text, isUser) {
       const chatContent = document.getElementById('chat-content');
       const msgContainer = document.createElement('div');
@@ -543,18 +496,14 @@
 
       const message = document.createElement('div');
       message.className = 'message';
-      if (isUser) {
-        message.classList.add('user-message');
-      }
+      if (isUser) message.classList.add('user-message');
       message.textContent = text;
 
       if (isUser) {
-        // Mensaje del usuario: sin avatar
         msgContainer.style.flexDirection = 'row-reverse';
         msgContainer.style.justifyContent = 'flex-end';
         msgContainer.appendChild(message);
       } else {
-        // Mensaje del bot: con avatar
         const avatar = document.createElement('div');
         avatar.innerHTML = createAvatar();
         msgContainer.appendChild(avatar);
@@ -565,36 +514,30 @@
       chatContent.scrollTop = chatContent.scrollHeight;
     }
 
-    // Enviar mensaje
+    // Enviar
     document.getElementById('send-btn').addEventListener('click', () => {
       const input = document.getElementById('user-input');
       const text = input.value.trim();
       if (!text) return;
 
-      // Eliminar contenido inicial si existe
       if (document.querySelector('.greeting')) {
         document.querySelector('.greeting').remove();
         document.querySelector('.typewriter-container').remove();
         document.querySelector('.date-info').remove();
       }
 
-      // Mostrar mensaje del usuario
       addMessage(text, true);
-
-      // Limpiar input
       input.value = '';
 
-      // Simular respuesta de IA después de 1.5 segundos
       setTimeout(() => {
         addMessage(`Gracias por tu mensaje: "${text}". ¿En qué más puedo ayudarte?`, false);
       }, 1500);
     });
 
-    // Permitir enviar con Enter
-    document.getElementById('user-input').addEventListener('keypress', (e) => {
+    // Enter = enviar
+    document.getElementById('user-input').addEventListener('keypress', e => {
       if (e.key === 'Enter') document.getElementById('send-btn').click();
     });
   </script>
-
 </body>
 </html>
