@@ -241,6 +241,14 @@
     }
     .model-item:hover { background: rgba(255, 255, 255, 0.08); }
 
+    /* Descripción del modelo */
+    .model-description {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 4px;
+      padding-left: 28px;
+    }
+
     /* Input + botones — pegados */
     .input-area {
       display: flex;
@@ -343,8 +351,11 @@
       <div class="model-btn" id="model-btn">⚡ Seleccionar modelo</div>
       <div class="model-menu" id="model-menu">
         <div class="model-item" data-model="code">💻 Oclade Code</div>
+        <div class="model-description">IA especializada en programación, desarrollo y solución de bugs.</div>
         <div class="model-item" data-model="think">🧠 Oclade Think</div>
+        <div class="model-description">IA avanzada para análisis profundo, lógica y resolución de problemas.</div>
         <div class="model-item" data-model="chat">💬 Oclade Chat Pro</div>
+        <div class="model-description">IA versátil para todo tipo de conversaciones y tareas.</div>
       </div>
     </div>
 
@@ -462,6 +473,17 @@
         // Cambiar modelo
         currentModel = item.getAttribute('data-model');
         loadResponses(currentModel);
+
+        // Mostrar mensaje de saludo del modelo
+        let greeting = '';
+        if (currentModel === 'code') {
+          greeting = 'Hola, soy Oclade Code. Estoy especializado en programación.';
+        } else if (currentModel === 'think') {
+          greeting = 'Hola, soy Oclade Think. Estoy aquí para análisis profundo.';
+        } else if (currentModel === 'chat') {
+          greeting = 'Hola, soy Oclade Chat Pro. Estoy listo para cualquier tema.';
+        }
+        addMessage(greeting, false);
       });
     });
 
@@ -565,4 +587,3 @@
   </script>
 </body>
 </html>
-
