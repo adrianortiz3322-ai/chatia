@@ -1,0 +1,10 @@
+{
+  "greeting": "Hola, soy Oclade Code. Estoy aquí para ayudarte con programación.",
+  "responses": {
+    "hola": "¡Hola! ¿En qué puedo ayudarte con programación?",
+    "como crear una api": "Para crear una API, puedes usar Express.js en Node.js. Define rutas, middlewares y usa métodos HTTP como GET, POST, PUT, DELETE.",
+    "que es react": "React es una biblioteca de JavaScript para construir interfaces de usuario. Permite crear componentes reutilizables y manejar el estado de la aplicación.",
+    "como arreglo este error": "Por favor, comparte el código o el mensaje de error para poder ayudarte mejor."
+  }
+}
+
