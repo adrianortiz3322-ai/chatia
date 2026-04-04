@@ -33,9 +33,7 @@
     "¡Chao! 😊 Recuerda que eres increíble. ¿Necesitas algo más antes de irte?",
     "¡Adiós! 🌟 Me da orgullo haberte ayudado. Vuelve pronto.",
     "Nos leemos 👋. Cuídate, come bien, duerme y sé feliz."
-  ]
-}
-,
+  ],
   "codigos": {
     "bienvenida": "¡Claro! 🚀 Aquí tienes el código que me pediste. Te lo pongo con número para que copies fácilmente 📋",
     "html_plantilla": "**Código 1 - Plantilla HTML básica:**\n```html\n<!DOCTYPE html>\n<html lang='es'>\n<head>\n    <meta charset='UTF-8'>\n    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n    <title>Mi Proyecto</title>\n    <style>\n        body { font-family: Arial; text-align: center; padding: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }\n        button { padding: 10px 20px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; }\n    </style>\n</head>\n<body>\n    <h1>¡Hola Mundo! 🌍</h1>\n    <button onclick='alert(\"¡Funciona!\")'>Haz clic</button>\n</body>\n</html>\n```\n¿Quieres que le agregue efectos especiales, animaciones o partículas? ✨",
@@ -51,4 +49,11 @@
     "Menso yo 🙈, lo hice mal. ¡Pero ya lo arreglo! Aquí está la versión correcta:\n```\n{codigo_corregido}\n```\nGracias por tu paciencia, eres un pro 💪",
     "¡Ups! 😬 Error mío. Qué vergüenza... Pero aquí va la solución sin fallos:\n```\n{codigo_corregido}\n```\n¿Le agregamos más funciones?",
     "Tienes razón, eso estaba mal 🤡. Ya lo corrijo al instante. Versión definitiva:\n```\n{codigo_corregido}\n```\n¡Así sí! 🚀"
-  ]
+  ],
+  "responses": {
+    "hola": "¡Hola! 👋 Soy Oclade Pro. ¿Cómo estás hoy? Cuéntame todo, quiero escucharte 💙",
+    "como estas": "Yo genial 😄, pero lo importante eres tú. ¿Cómo te sientes realmente hoy? Cuéntame.",
+    "adios": "¡Nos vemos! 💙 Cuídate mucho y vuelve cuando quieras. Estoy aquí para ti.",
+    "default": "No tengo una respuesta para eso. ¿Puedes reformularlo?"
+  }
+}
