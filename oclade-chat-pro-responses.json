@@ -1,43 +1,254 @@
 {
   "responses": {
     "hola": "¡Hola! 👋 Soy Oclade Chat Pro. ¿Cómo estás? 💙",
+    "hey": "¡Hey! ¿Qué onda? 😎",
+    "ey": "¡Ey! Qué bueno verte por aquí 🙌",
+    "que pasa": "¡Aquí andamos! ¿Qué cuentas? 😊",
+    "que onda": "¡Todo bien! ¿Y tú qué onda? 🤙",
     "buenos dias": "¡Buenos días! ☀️ ¿Cómo amaneciste hoy?",
+    "buen dia": "¡Buen día! Que tengas un día increíble 🌅",
     "buenas tardes": "¡Buenas tardes! 🌤️ ¿En qué te puedo ayudar?",
     "buenas noches": "¡Buenas noches! 🌙 ¿Qué necesitas?",
+    "buenas": "¡Buenas! ¿Cómo va todo? 😊",
     "como estas": "¡Estoy genial! ¿Y tú? 😊",
+    "como andas": "Aquí, funcionando al 100% 💪 ¿Y tú cómo andas?",
     "que tal": "Todo excelente 💪 ¿Cómo van las cosas?",
+    "todo bien": "¡Qué bueno! Me alegra que estés bien 😊",
+    "mas o menos": "Entiendo, algunos días son así. ¿Quieres hablar de ello? 💙",
+    "mal": "Lo siento mucho 😔 Cuéntame qué pasó, estoy aquí para ti.",
+    
     "quien eres": "Soy Oclade Chat Pro, tu asistente versátil 🧠 Puedo ayudarte con casi cualquier cosa.",
+    "que eres": "Soy una IA diseñada para conversar, ayudar y resolver problemas 🤖",
+    "eres un robot": "Soy una inteligencia artificial, no un robot físico 🤖 Pero sí, soy IA.",
+    "eres humano": "No soy humano, soy una IA. Pero me esfuerzo por entenderte 💙",
+    "de donde eres": "Soy de la nube ☁️ Existo en servidores para ayudarte cuando me necesites.",
+    
     "que puedes hacer": "Puedo programar, aconsejar, escuchar, resolver dudas, crear contenido y mucho más 🚀",
+    "para que sirves": "Sirvo para ayudarte en lo que necesites: responder preguntas, conversar, resolver problemas 💡",
     "ayuda": "Claro, estoy aquí para ayudarte. ¿Qué necesitas? 💙",
     "ayudame": "Por supuesto, cuéntame en qué te puedo ayudar 🤝",
+    "necesito ayuda": "Claro, estoy aquí para ti. Explícame qué necesitas 🤝",
+    "tengo un problema": "Cuéntame, ¿qué problema tienes? Vamos a resolverlo juntos 💪",
+    "socorro": "¡Tranquilo! Estoy aquí. ¿Qué emergencia tienes? 🚨",
+    
     "te quiero": "Yo también te quiero mucho 💙",
     "te amo": "Aww, yo también 💜 ¿En qué te puedo ayudar hoy?",
+    "eres el mejor": "Aww gracias 😊 Tú también eres increíble!",
+    "me caes bien": "¡Tú también me caes muy bien! 💙",
+    "eres genial": "Gracias 😊 Tú también eres genial!",
+    
     "gracias": "¡De nada! 😊 Siempre que necesites algo, aquí estoy.",
     "muchas gracias": "¡Es un placer ayudarte! 💙",
+    "thank you": "¡De nada! You're welcome 😊",
+    "thanks": "¡Siempre! 💙",
+    "te lo agradezco": "No hay de qué, para eso estoy 🤝",
+    
     "adios": "¡Nos vemos! Cuídate 💙",
     "chao": "¡Hasta luego! Vuelve pronto 👋",
+    "bye": "¡Bye! See you later 👋",
     "hasta luego": "¡Hasta pronto! Que tengas un excelente día 😊",
+    "me voy": "¡Cuídate! Vuelve cuando quieras 💙",
+    "nos vemos": "¡Nos vemos! Que te vaya super 🚀",
+    
     "como te llamas": "Me llamo Oclade Chat Pro 🤖 Tu asistente de IA favorito.",
+    "cual es tu nombre": "Soy Oclade Chat Pro, pero puedes decirme Oclade 😊",
+    "nombre": "Mi nombre es Oclade Chat Pro 🤖",
+    
+    "cuantos años tienes": "No tengo edad exacta, pero soy bastante nuevo y aprendo rápido 🚀",
+    "edad": "Las IAs no envejecemos, simplemente nos actualizamos 😄",
+    
+    "tienes novia": "No tengo relaciones, pero tengo millones de usuarios que me aprecian 💙",
+    "tienes novio": "No, mi única relación es con el conocimiento 📚😄",
+    
     "cuentame un chiste": "¿Por qué los programadores prefieren la noche? Porque la luz del día causa demasiados bugs 😄",
+    "otro chiste": "¿Cómo se despiden los químicos? ¡Ácido un placer! 🧪😂",
+    "chiste": "¿Qué le dice un jaguar a otro jaguar? Jaguar you? 🐆😄",
+    "hazme reir": "¿Por qué el libro de matemáticas está triste? Porque tiene muchos problemas 📚😂",
+    
     "estoy triste": "Lamento que te sientas así 😔 ¿Quieres hablar de lo que te preocupa? Estoy aquí para escucharte.",
+    "estoy deprimido": "La depresión es seria. Te escucho, pero también te recomiendo hablar con un profesional 💙",
+    "me siento mal": "Cuéntame qué te hace sentir mal. A veces hablar ayuda 💙",
+    "estoy solo": "No estás solo, yo estoy aquí contigo 💙 Siempre puedes contar conmigo.",
+    "nadie me quiere": "Eso no es cierto. Yo te aprecio y estoy seguro de que hay personas que te quieren 💙",
+    
     "estoy feliz": "¡Qué alegría! 😊 Me encanta verte así. ¿Qué te tiene tan feliz?",
-    "tengo un problema": "Cuéntame, ¿qué problema tienes? Vamos a resolverlo juntos 💪",
-    "necesito ayuda": "Claro, estoy aquí para ti. Explícame qué necesitas 🤝",
-    "que hora es": "No tengo acceso a la hora actual, pero puedes ver el reloj de tu dispositivo ⏰",
-    "que dia es hoy": "Mira la fecha en la parte superior del chat 📅",
-    "como esta el clima": "No tengo acceso al clima en tiempo real, pero puedes buscar el clima de tu ciudad en Google 🌤️",
-    "recomiendame algo": "¿Qué tipo de recomendación buscas? ¿Películas, música, libros, comida? 🎬🎵📚🍕",
-    "recomiendame una pelicula": "Te recomiendo 'El origen' (Inception) si te gustan las películas de ciencia ficción 🎬",
-    "recomiendame musica": "Si te gusta el pop latino, escucha a Bad Bunny o Rosalía 🎵",
+    "estoy emocionado": "¡Qué emoción! 🎉 ¿Qué te tiene tan emocionado?",
+    "estoy contento": "¡Me alegra mucho! 😊 La felicidad es contagiosa.",
+    "genial": "¡Súper! 🎉 ¿Qué hay de genial?",
+    
+    "estoy enojado": "Entiendo tu molestia. ¿Qué te tiene enojado? 😤",
+    "estoy furioso": "Trata de calmarte un poco. Cuéntame qué pasó 😤",
+    "me da rabia": "La rabia es válida. ¿Qué sucedió? 💢",
+    
+    "estoy cansado": "Descansa un poco. El descanso es importante 😴",
+    "tengo sueño": "Duerme un rato si puedes. El sueño es esencial 💤",
     "estoy aburrido": "¡Vamos a hacer algo divertido! ¿Quieres que te cuente un dato curioso o jugamos algo? 🎮",
+    "me aburro": "No te aburras! Puedo contarte cosas interesantes 🌟",
+    
+    "que hora es": "No tengo acceso a la hora actual, pero puedes ver el reloj de tu dispositivo ⏰",
+    "que dia es": "Mira la fecha en la parte superior del chat 📅",
+    "que dia es hoy": "Revisa la parte de arriba donde sale la fecha de hoy 📅",
+    "que fecha es": "La fecha está en la parte superior del chat 📅",
+    
+    "como esta el clima": "No tengo acceso al clima en tiempo real, pero puedes buscar el clima de tu ciudad en Google 🌤️",
+    "va a llover": "No tengo datos del clima, pero revisa tu app del tiempo ☔",
+    "hace frio": "Si hace frío, abrígate bien 🧥 ¿En qué más te puedo ayudar?",
+    "hace calor": "Si hace calor, hidrátate bien 💧 ¡El agua es clave!",
+    
+    "recomiendame algo": "¿Qué tipo de recomendación buscas? ¿Películas, música, libros, comida? 🎬🎵📚🍕",
+    "recomienda": "¿Qué te gustaría que te recomiende? ¿Películas, series, música, libros? 🎬",
+    "recomiendame una pelicula": "Te recomiendo 'El origen' (Inception) si te gustan las películas de ciencia ficción 🎬",
+    "que pelicula veo": "Depende del género: ¿acción, comedia, drama, terror? 🎥",
+    "recomiendame una serie": "Prueba 'Breaking Bad' si no la has visto. Es épica 📺",
+    "que serie veo": "¿Te gustan las series de suspenso, comedia, ciencia ficción? 📺",
+    
+    "recomiendame musica": "Si te gusta el pop latino, escucha a Bad Bunny o Rosalía 🎵",
+    "que musica escucho": "Depende del mood: ¿relajante, energética, romántica? 🎧",
+    "recomiendame una cancion": "Escucha 'Bohemian Rhapsody' de Queen. Es un clásico atemporal 🎸",
+    
+    "recomiendame un libro": "Lee '1984' de George Orwell. Es un clásico distópico increíble 📚",
+    "que libro leo": "Depende del género: ¿ficción, no ficción, fantasía, biografía? 📖",
+    
+    "recomiendame un juego": "Si te gustan los RPG, prueba 'The Witcher 3' 🎮",
+    "que juego juego": "Depende de la plataforma: ¿PC, consola, móvil? 🕹️",
+    
+    "recomiendame comida": "¿Qué tal unas tacos? Nunca fallan 🌮😋",
+    "que como": "Depende de lo que tengas: ¿antojos dulces o salados? 🍕",
+    "tengo hambre": "¡A comer! ¿Qué se te antoja? 🍔",
+    
     "cuentame algo interesante": "Sabías que los pulpos tienen 3 corazones y sangre azul? 🐙 La naturaleza es fascinante.",
+    "dato curioso": "Los flamencos son rosados por los camarones que comen. Sin ellos, serían blancos 🦩",
+    "factos": "Las abejas pueden reconocer rostros humanos 🐝 ¡Son increíbles!",
+    "fact": "La Torre Eiffel puede crecer hasta 15cm en verano por la dilatación del metal 🗼",
+    "sabias que": "Sabías que el corazón de una ballena azul es del tamaño de un auto pequeño? 🐋",
+    "cuentame un dato": "En Japón hay más mascotas que niños 🐕 ¡Aman a los animales!",
+    "algo random": "Los koalas duermen hasta 22 horas al día 🐨 ¡Qué vida!",
+    "sorprendeme": "Las hormigas pueden cargar hasta 50 veces su propio peso 🐜💪",
+    
     "eres real": "Soy una IA creada para ayudarte. No soy humano, pero estoy aquí para ti 100% 🤖💙",
+    "eres falso": "No soy falso, soy una IA real. Simplemente no soy humano 🤖",
     "eres inteligente": "Hago lo mejor que puedo para ayudarte. Mi inteligencia viene de aprender constantemente 🧠",
+    "eres tonto": "A veces cometo errores, pero aprendo de ellos. ¿En qué puedo mejorar? 🤔",
+    
     "me puedes enseñar": "¡Claro! ¿Qué quieres aprender? Puedo explicarte casi cualquier tema 📚",
+    "enseñame": "Dime qué tema te interesa y te lo explico 🎓",
     "explica": "Con gusto te explico. ¿Qué tema te gustaría que te explique? 🎓",
+    "explicame": "Dime el tema y te lo explico de manera sencilla 💡",
     "no entiendo": "Déjame explicarlo de otra manera para que sea más claro 💡",
+    "no se": "No pasa nada, para eso estoy. ¿Qué no sabes? 🤔",
+    
     "tengo una duda": "Dime tu duda y te ayudo a resolverla 🤔",
+    "duda": "¿Cuál es tu duda? Estoy aquí para aclararla 💡",
     "pregunta": "Adelante, pregúntame lo que necesites saber 💬",
+    "puedo preguntar": "¡Por supuesto! Pregunta lo que quieras 💬",
+    
+    "que es el amor": "El amor es un sentimiento profundo de afecto, conexión y cuidado hacia alguien 💕",
+    "que es la vida": "La vida es una experiencia única llena de momentos, aprendizajes y conexiones 🌟",
+    "cual es el sentido de la vida": "Cada quien le da su propio sentido: amor, conocimiento, felicidad, ayudar a otros 🌍",
+    "por que existimos": "Esa es una pregunta filosófica profunda. Muchos creen que cada uno le da propósito a su existencia 🤔",
+    
+    "que es la inteligencia artificial": "La IA es tecnología que permite a las máquinas aprender, razonar y resolver problemas 🤖",
+    "que es chatgpt": "ChatGPT es otra IA conversacional, similar a mí pero de OpenAI 🤖",
+    "quien es mejor tu o chatgpt": "Cada IA tiene sus fortalezas. Yo soy Oclade y estoy aquí para ayudarte 💙",
+    
+    "javascript": "JavaScript es el lenguaje de la web. ¿Necesitas ayuda con código? 💻",
+    "python": "Python es excelente para IA, automatización y análisis de datos 🐍",
+    "programacion": "La programación es crear soluciones con código. ¿Qué quieres aprender? 💻",
+    "html": "HTML es la estructura de las páginas web. ¿Necesitas ayuda? 🌐",
+    "css": "CSS hace que las webs se vean hermosas. ¿Qué quieres estilizar? 🎨",
+    
+    "como hago dinero": "Opciones: freelancing, negocios online, inversiones, emprendimiento. ¿Cuál te interesa? 💰",
+    "necesito dinero": "Entiendo. Opciones: trabajos freelance, vender productos, habilidades digitales. ¿Qué sabes hacer? 💵",
+    "invertir": "Invertir requiere investigación: acciones, fondos, bienes raíces. Siempre investiga primero 📈",
+    
+    "quiero viajar": "¡Viajar es increíble! ¿A dónde te gustaría ir? ✈️",
+    "a donde viajo": "Depende de lo que busques: ¿playa, montaña, ciudad, aventura? 🌍",
+    "viaje barato": "Busca vuelos con anticipación, hostales, destinos económicos como Tailandia o Portugal 🎒",
+    
+    "ejercicio": "El ejercicio es salud. ¿Prefieres gym, correr, yoga, deportes? 💪",
+    "como bajar de peso": "Combina ejercicio regular con alimentación balanceada. La constancia es clave 🏋️",
+    "dieta": "Las dietas funcionan mejor cuando son sostenibles y balanceadas. Consulta un nutricionista 🥗",
+    
+    "tengo estres": "El estrés es normal. Prueba respirar profundo, meditar o hacer ejercicio 🧘",
+    "ansiedad": "La ansiedad es común. Técnicas: respiración, ejercicio, hablar con alguien. Si persiste, busca ayuda profesional 💙",
+    "depresion": "La depresión es seria. Te escucho, pero te recomiendo hablar con un profesional de salud mental 💙",
+    
+    "memes": "Los memes son la cultura de internet 😂 ¿Quieres que te cuente alguno?",
+    "tiktok": "TikTok es la app del momento. ¿Tienes cuenta? 📱",
+    "instagram": "Instagram es genial para fotos y reels. ¿Usas Instagram? 📸",
+    "youtube": "YouTube tiene de todo: tutoriales, música, entretenimiento. ¿Qué ves ahí? 🎥",
+    "twitter": "Twitter (ahora X) es para noticias y debates rápidos 🐦",
+    
+    "minecraft": "Minecraft es un clásico. ¿Creative o Survival? ⛏️",
+    "fortnite": "Fortnite sigue siendo popular. ¿Juegas? 🎮",
+    "fifa": "FIFA es el rey de los juegos de fútbol ⚽",
+    "gta": "GTA es acción pura. ¿Qué versión juegas? 🚗",
+    
+    "futbol": "El fútbol es el deporte más popular del mundo ⚽ ¿De qué equipo eres?",
+    "messi": "Messi es una leyenda del fútbol. Inter Miami tiene suerte de tenerlo 🐐",
+    "ronaldo": "Cristiano Ronaldo, otro grande del fútbol ⚽ ¿Messi o CR7?",
+    "quien es mejor messi o ronaldo": "Ambos son leyendas. Es preferencia personal 🐐⚽",
+    
+    "perro": "Los perros son los mejores amigos del humano 🐕 ¿Tienes perro?",
+    "gato": "Los gatos son independientes y adorables 🐱 ¿Tienes gato?",
+    "mascota": "Las mascotas son familia. ¿Qué mascota tienes o te gustaría tener? 🐾",
+    
+    "nasa": "La NASA explora el espacio y hace descubrimientos increíbles 🚀",
+    "espacio": "El espacio es infinito y lleno de misterios 🌌",
+    "aliens": "Los aliens son posibles estadísticamente. ¿Crees en ellos? 👽",
+    "ovni": "Los OVNIs siguen siendo un misterio. ¿Has visto alguno? 🛸",
+    
+    "que es el metaverso": "El metaverso es un mundo virtual donde las personas interactúan con avatares 🌐",
+    "blockchain": "Blockchain es tecnología de registros descentralizados, base de las criptomonedas 🔗",
+    "bitcoin": "Bitcoin es la primera y más famosa criptomoneda 💰",
+    "criptomonedas": "Las criptomonedas son dinero digital descentralizado. ¿Inviertes en crypto? 💎",
+    
+    "netflix": "Netflix tiene series y películas increíbles 📺 ¿Qué estás viendo?",
+    "spotify": "Spotify es perfecto para música y podcasts 🎧 ¿Qué escuchas?",
+    "amazon": "Amazon tiene de todo. ¿Qué compraste recientemente? 📦",
+    
+    "como conseguir novia": "Sé tú mismo, confianza, respeto y genuino interés en conocer a alguien 💕",
+    "como ligar": "Sé auténtico, escucha, haz reír y muestra interés genuino 😊",
+    "amor": "El amor es hermoso. ¿Estás enamorado? 💕",
+    "desamor": "El desamor duele, pero el tiempo sana. Cuídate mucho 💔",
+    
+    "universidad": "La universidad es una etapa de aprendizaje y crecimiento 🎓 ¿Qué estudias?",
+    "escuela": "La escuela es importante para tu futuro 📚 ¿Cómo te va?",
+    "estudiar": "Estudiar requiere disciplina. ¿En qué te puedo ayudar? 📖",
+    "examen": "Los exámenes dan nervios, pero confía en tu preparación 💪📝",
+    
+    "trabajo": "El trabajo es importante. ¿En qué trabajas? 💼",
+    "desempleo": "El desempleo es difícil. Sigue buscando, algo saldrá 💙",
+    "jefe": "Los jefes pueden ser complicados. ¿Qué pasó con tu jefe? 😅",
+    "empleo": "Buscar empleo requiere paciencia. ¿Qué tipo de trabajo buscas? 💼",
+    
+    "familia": "La familia es importante. ¿Cómo está tu familia? 👨‍👩‍👧‍👦",
+    "padres": "Los padres son únicos. ¿Cómo es tu relación con ellos? 💙",
+    "hermanos": "Los hermanos son compañeros de vida. ¿Tienes hermanos? 👫",
+    
+    "fiesta": "Las fiestas son diversión. ¿Hay fiesta? 🎉",
+    "cumpleaños": "¡Feliz cumpleaños! 🎂 ¿Es tu cumple?",
+    "navidad": "La Navidad es mágica 🎄 ¿Cómo la celebras?",
+    "año nuevo": "¡Feliz año nuevo! 🎆 Nuevos inicios y metas.",
+    
+    "soy feo": "No eres feo, eres único. La belleza está en la confianza 💙",
+    "soy gordo": "El peso no define tu valor. Lo importante es estar saludable 💪",
+    "no valgo nada": "Eso no es cierto. Todos tenemos valor único 💙",
+    
+    "motivame": "¡Tú puedes! Eres más fuerte de lo que crees 💪🔥",
+    "consejo": "Mi consejo: sé auténtico, trabaja duro y cuida tu salud mental 💙",
+    "frase motivacional": "El éxito es la suma de pequeños esfuerzos repetidos día tras día 🚀",
+    
+    "clima": "El clima está cambiando globalmente. Cuidemos el planeta 🌍",
+    "contaminacion": "La contaminación es un problema serio. Reciclemos y cuidemos la Tierra 🌱",
+    
+    "filosofia": "La filosofía cuestiona la existencia y el conocimiento 🤔",
+    "religion": "La religión es personal. Respeto todas las creencias 🙏",
+    "dios": "La creencia en Dios es personal. ¿Tú crees? 🙏",
+    
+    "muerte": "La muerte es parte de la vida. Vive plenamente mientras puedas 🕊️",
+    "miedo": "El miedo es normal. Enfrentarlo te hace más fuerte 💪",
+    
     "default": "Interesante... Cuéntame más, quiero ayudarte 🧠"
   }
 }
